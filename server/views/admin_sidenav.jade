@@ -1,0 +1,8 @@
+block admin_sidenav
+    md-sidenav.sidenav.md-whiteframe-z2(md-is-locked-open='true', flex)
+        md-list.fixedRows(ng-controller='adminSidenavController', layout-padding)
+            md-subheader.md-no-sticky Settings
+            md-list-item.md-2-line.contact-item(ng-repeat='setting in settings', ng-click='itemClicked(setting.name)')
+                md-icon(class='material-icons', aria-label='{{setting.name}}') {{setting.icon}}
+                .md-list-item-text
+                    h3(ng-class='setting.name') {{setting.name}}

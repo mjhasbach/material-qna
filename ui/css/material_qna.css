@@ -1,0 +1,200 @@
+body {
+    overflow: hidden;
+}
+
+.auth {
+    width: 300px
+}
+
+.auth md-icon {
+    font-size: 200px;
+    height: 200px;
+    width: 200px;
+}
+
+.questionGrid > .deckgrid[deckgrid]::before {
+    content: '4 .column.column-1-4';
+    font-size: 0;
+    visibility: hidden;
+}
+
+.questionGrid > .deckgrid .column {
+    float: left;
+}
+
+.questionGrid > .deckgrid .column-1-4 {
+    width: 25%;
+}
+
+.questionGrid > .deckgrid .column img {
+    width: 100%;
+    margin-bottom: -4px;
+}
+
+md-progress-circular,
+.admin .qna .images > .imgNav > .imgContainer > img,
+.admin .qna .images > .imgNav > button {
+    position: absolute;
+    margin: auto !important;
+    top: 0;
+    bottom: 0;
+}
+
+:not(button) > md-progress-circular,
+.admin .qna .images > .imgNav > .imgContainer > img {
+    left: 0;
+    right: 0;
+}
+
+button > md-progress-circular {
+    height: auto;
+    left: -6px;
+    top: -10px;
+}
+
+.admin > md-sidenav {
+    min-width: 155px;
+    max-width: 155px;
+}
+
+.admin > md-sidenav .Users {
+    margin-top: 4px !important;
+}
+
+.admin .users .search .userId, .admin .qna .search .questionId {
+    width: 107px;
+}
+
+.admin .users .search .username, .admin .qna .search .question {
+    margin-right: 16px;
+}
+
+.admin .users .search .table, .admin .qna .search .table {
+    margin-top: 7px;
+}
+
+.auth button,
+.admin .users .edit button,
+.admin .qna .addEdit button {
+    height: 36px !important;
+}
+
+.admin .qna .addEdit .question {
+    margin-bottom: 22px;
+}
+
+.admin .qna .addEdit md-input-container.answer {
+    padding: 0;
+}
+
+.admin .qna .addEdit .correctAnswerContainer {
+    width: 108px
+}
+
+.admin .qna .addEdit .correctAnswerContainer > .correctAnswer {
+    padding-left: 0;
+}
+
+.admin .qna .addEdit .deleteAnswer {
+    margin-bottom: 10px;
+}
+
+.admin .qna .addEdit .bottomRow {
+    margin-top: 19px;
+}
+
+.admin .qna .images > .search {
+    margin-top: 10px;
+}
+
+.admin .qna .upload > .example {
+    margin-top: 10px;
+    overflow-x: auto;
+    background-color: #474949;
+}
+
+.admin .qna .upload > .example > pre {
+    margin: 0;
+}
+
+.admin .qna .upload > .example > pre > code {
+    overflow-x: visible;
+}
+
+.admin .qna .images > .imgNav {
+    position: relative;
+    margin: 3px 0 16px 0;
+}
+
+.admin .qna .images > .imgNav > button.previous {
+    left: 10px;
+}
+
+.admin .qna .images > .imgNav > button.next {
+    right: 10px;
+}
+
+.admin .qna .images > .imgNav > .imgContainer > img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.admin .qna .images > .imgNav > .imgContainer > .poweredByGoogleImg {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 170px;
+    padding: 7px;
+}
+
+.admin .qna .images md-progress-circular {
+    z-index: 1;
+}
+
+.admin .qna .images > .tokenContainer {
+    margin-bottom: 13px;
+}
+
+/*todo temporary fix, see https://github.com/angular/material/pull/5102 and https://github.com/angular/material/issues/4938*/
+.admin .qna .images > .tokenContainer md-chip {
+    padding-right: 12px;
+}
+
+/*todo temporary fix, see https://github.com/angular/material/pull/5102 and https://github.com/angular/material/issues/4938*/
+.admin .qna .images > .tokenContainer md-chip > .md-chip-content {
+    padding-right: 0;
+}
+
+.admin .qna .images > .imgNav > button.ng-enter,
+.admin .qna .images > .imgNav > .imgContainer.ng-enter {
+    -webkit-animation: fadeIn 1.0s linear;
+    -moz-animation: fadeIn 1.0s linear;
+    -o-animation: fadeIn 1.0s linear;
+    animation: fadeIn 1.0s linear;
+}
+
+.admin .qna .images > .imgNav > button.ng-leave,
+.admin .qna .images > .imgNav > .imgContainer.ng-leave {
+    -webkit-animation: fadeOut 1.0s linear;
+    -moz-animation: fadeOut 1.0s linear;
+    -o-animation: fadeOut 1.0s linear;
+    animation: fadeOut 1.0s linear;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

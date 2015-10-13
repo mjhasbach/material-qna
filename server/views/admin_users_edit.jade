@@ -1,0 +1,31 @@
+block admin_users_edit
+    md-tab(label='Edit', ng-disabled='!editQueue.ids.length', md-on-select='toast.hide()')
+        md-tab-content.edit.md-padding(ng-if='tabs.i === 1', ng-controller='adminUsersEditController')
+            md-progress-circular(ng-show='!data', md-mode='indeterminate')
+            form(ng-show='data', name='editForm')
+                div(layout='row')
+                    md-input-container(style='width: 125px')
+                        label User ID
+                        input(type='number', ng-model='data.id', disabled)
+                    md-input-container(flex)
+                        label Username
+                        input(
+                        required
+                        name='username'
+                        ng-disabled='saving'
+                        ng-model='data.username'
+                        maxlength='255'
+                        )
+                        div(ng-messages='editForm.username.$error')
+                            div(ng-message='required') This is required
+                div(layout='row', layout-align='end center')
+                    md-switch(
+                    ng-disabled='saving',
+                    ng-model='data.isAdmin'
+                    aria-label='is administrator'
+                    )
+                        | Administrator
+                    md-button.md-raised.md-warn(ng-click='cancel()', ng-disabled='saving') Cancel
+                    md-button.md-raised.md-primary(ng-click='save()', ng-disabled='!data.username')
+                        div(ng-show='!saving') Save
+                        md-progress-circular(ng-show='saving', md-mode='indeterminate', md-diameter='20px')

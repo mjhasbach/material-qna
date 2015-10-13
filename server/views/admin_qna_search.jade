@@ -1,0 +1,46 @@
+block admin_qna_search
+    md-tab(label='Search', ng-disabled='editQueue.ids.length || image.question', md-on-select='toast.hide()')
+        md-tab-content.search.md-padding(ng-if='tabs.i === 1', ng-controller='adminQnASearchController')
+            div(layout='row')
+                md-input-container.questionId
+                    label Question ID
+                    input(type='number', ng-model='query.id', ng-change='search()')
+                md-input-container.question(flex)
+                    label Question Contains
+                    input(ng-model='query.question', maxlength='255', ng-change='search()')
+                div(layout='row', layout-align='center center')
+                    div Disabled
+                    md-checkbox(ng-model='query.disabled', aria-label='is disabled', ng-change='search()')
+                div(layout='row', layout-align='center center')
+                    div Missing Image
+                    md-checkbox(ng-model='query.missingImage', aria-label='missing image', ng-change='search()')
+            md-data-table-toolbar
+                h2.md-title Questions
+                span(flex)
+                md-button.md-fab.md-mini(ng-disabled='!selected.length', ng-click='edit()', aria-label='edit')
+                    md-tooltip Edit
+                    md-icon(class='material-icons') mode_edit
+                md-button.md-fab.md-mini.md-warn(
+                ng-disabled='!selected.length'
+                ng-click='remove()'
+                aria-label='remove'
+                )
+                    md-tooltip Remove
+                    md-icon(class='material-icons') delete
+            md-data-table-container.table
+                table(md-data-table, md-row-select='selected', md-progress='deferred')
+                    thead(md-order='query.order', md-trigger='search')
+                        tr
+                            th(name='Question ID', order-by='id')
+                            th(name='Disabled', order-by='disabled')
+                            th(name='Question', order-by='question')
+                    tbody
+                        tr(md-auto-select, ng-repeat='question in questions.rows track by question.id')
+                            td {{question.id}}
+                            td {{question.disabled}}
+                            td {{question.question}}
+            md-data-table-pagination(
+            md-limit='query.limit'
+            md-page='query.page'
+            md-total='{{questions.count}}'
+            md-trigger='search')

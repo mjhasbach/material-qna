@@ -1,0 +1,46 @@
+block admin_qna_image
+    md-tab(label='Images', ng-disabled='!image.question', md-on-select='toast.hide()')
+        md-tab-content.images.md-padding(
+        ng-if='tabs.i === 3'
+        ng-controller='adminQnAImageController'
+        layout='column'
+        flex
+        )
+            .imgNav(flex)
+                md-progress-circular(ng-show='loading', md-mode='indeterminate')
+                md-button.md-fab.previous(
+                ng-disabled='i < 1 || loading'
+                ng-if='currentImage && query === lastQuery'
+                ng-click='previous()'
+                aria-label='previous image'
+                )
+                    md-tooltip Previous Image
+                    md-icon(class='material-icons') arrow_back
+                md-button.md-fab.next(
+                ng-disabled='loading'
+                ng-if='currentImage && query === lastQuery'
+                ng-click='next()'
+                aria-label='next image'
+                )
+                    md-tooltip Next Image
+                    md-icon(class='material-icons') arrow_forward
+                .imgContainer(ng-repeat='image in images', flex)
+                    img.searchImg.md-whiteframe-z2(ng-src='{{image}}')
+                    img.poweredByGoogleImg(ng-if='currentImage', ng-src='{{poweredByGoogleImg}}')
+            div Question: {{image.question}}
+            md-input-container.search
+                label Search
+                input(ng-model='query', type='search')
+            .tokenContainer
+                div Click any of the below QnA tokens to add them to the search.
+                //todo improve chips, see https://github.com/angular/material/issues/4938
+                md-chips.md-readonly(ng-model='tokens', readonly='true')
+                    md-chip-template(ng-click='tokenClicked($event)', style='padding-right: 0px') {{$chip}}
+            div(layout='row', layout-align='end center')
+                md-button.md-raised.md-accent(
+                ng-click='search()'
+                ng-disabled='!query.length || query === lastQuery'
+                )
+                    | Search
+                md-button.md-raised.md-warn(ng-click='leave()') Cancel
+                md-button.md-raised.md-primary(ng-click='save()', ng-disabled='!currentImage') Save

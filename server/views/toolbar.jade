@@ -1,0 +1,12 @@
+block toolbar
+    md-toolbar.md-toolbar-tools(ng-controller='toolbarController')
+        h1#title #{appName}
+        span(flex)
+        md-button.md-icon-button(
+        ng-repeat='button in buttons'
+        ng-show='button.show'
+        ng-click='button.onClick()'
+        aria-label='{{button.name}}'
+        )
+            md-tooltip {{button.name}}
+            md-icon.toolbarButton(class='material-icons') {{button.icon}}

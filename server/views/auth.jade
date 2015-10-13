@@ -1,0 +1,42 @@
+block auth
+    section(
+    ng-controller='authController'
+    ng-show='view.current === "auth"'
+    layout='column', layout-align='center center',
+    flex
+    )
+        form.auth.md-whiteframe-z2(name='authForm', layout-padding)
+            div(layout='row', layout-align='center center')
+                md-icon.md-primary.md-hue-5(class='material-icons') question_answer
+            dv(layout='column', flex)
+                md-input-container(flex)
+                    label Username
+                    input(
+                    required
+                    name='username'
+                    ng-model='username'
+                    ng-disabled='authenticating'
+                    ng-keydown='keydown($event, authForm)'
+                    type='text'
+                    )
+                    div(ng-messages='authForm.username.$error')
+                        div(ng-message='required', ng-if='authForm.username.$touched') This is required
+                md-input-container(flex)
+                    label Password
+                    input(
+                    required
+                    name='password'
+                    ng-model='password'
+                    ng-disabled='authenticating'
+                    ng-keydown='keydown($event, authForm)'
+                    type='password'
+                    )
+                    div(ng-messages='authForm.password.$error')
+                        div(ng-message='required', ng-if='authForm.password.$touched') This is required
+            div(layout='row', layout-align='center center')
+                md-button.md-raised(ng-disabled='areButtonsDisabled()', ng-click='authenticate(authForm)')
+                    div(ng-show='!loggingIn') Log In
+                    md-progress-circular(ng-show='loggingIn', md-mode='indeterminate', md-diameter='20px')
+                md-button.md-raised(ng-disabled='areButtonsDisabled()', ng-click='authenticate(authForm, true)')
+                    div(ng-show='!registering') Register
+                    md-progress-circular(ng-show='registering', md-mode='indeterminate', md-diameter='20px')

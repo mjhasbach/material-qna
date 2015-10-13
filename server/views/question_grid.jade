@@ -1,0 +1,17 @@
+block qna
+    md-content.questionGrid(
+    ng-if='user.data'
+    ng-show='view.current === "qna"'
+    ng-controller='questionGridController'
+    layout='row'
+    flex
+    )
+        md-progress-circular(ng-show='gettingImages', md-mode='indeterminate')
+        div(ng-if='noQuestions', layout='column', layout-align='center center', flex)
+            h3 No questions have been added yet or you have answered all available questions
+        div(ng-if='imageFail', layout='column', layout-align='center center', flex)
+            h3 Unable to get question images
+        div(ng-if='placeholderFail', layout='column', layout-align='center center', flex)
+            h3 Unable to get placeholder images
+        div.deckgrid(ng-if='!noQuestions && !imageFail && !placeholderFail', deckgrid source='questions')
+            img(ng-src='{{card.image}}', ng-click='mother.imageClicked($event, card.id)')

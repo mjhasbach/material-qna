@@ -1,0 +1,70 @@
+block admin_qna_add
+    md-tab(label='{{editQueue.ids.length ? "Edit" : "Add"}}', ng-disabled='image.question', md-on-select='toast.hide()')
+        md-tab-content.addEdit.md-padding(
+        ng-if='tabs.i === 0 || image.question'
+        ng-controller='adminQnAAddEditController'
+        )
+            md-progress-circular(ng-show='!data', md-mode='indeterminate')
+            form(ng-show='data', name='addForm')
+                md-input-container.question(name='addForm', flex)
+                    label Question
+                    textarea(
+                    required
+                    ng-disabled='saving || image.question'
+                    name='question'
+                    ng-model='data.question'
+                    columns='1'
+                    md-maxlength='255'
+                    maxlength='255'
+                    )
+                    div(ng-messages='addForm.question.$error')
+                        div(ng-message='required', ng-if='addForm.question.$touched') This is required
+                div(layout='row', layout-align='end center') Correct Answer
+                div(ng-repeat='answer in data.answers track by answer.id', layout='row')
+                    div(layout='row', layout-align='center center')
+                        //todo resolve ink animation issue
+                        md-button.md-icon-button(
+                        ng-disabled='data.answers.length < 2 || saving'
+                        ng-click='deleteAnswer($index)'
+                        aria-label='delete answer'
+                        md-no-ink
+                        )
+                            md-tooltip Delete Answer
+                            md-icon.deleteAnswer(class='material-icons') delete
+                    md-input-container.answer(flex)
+                        label Answer {{$index + 1}}
+                        textarea(
+                        required
+                        ng-disabled='saving || image.question'
+                        name='answer{{$index}}'
+                        ng-model='answer.answer'
+                        columns='1'
+                        md-maxlength='255'
+                        maxlength='255'
+                        )
+                        div(ng-messages='addForm["answer" + $index].$error')
+                            div(ng-message='required', ng-if='addForm["answer" + $index].$touched') This is required
+                    .correctAnswerContainer(layout='row', layout-align='center center')
+                        md-checkbox.correctAnswer(
+                        ng-disabled='saving'
+                        ng-checked='data.correctAnswer.answerId === answer.id'
+                        ng-click='selectAnswer(answer.id)'
+                        aria-label='mark answer {{$index + 1}} as correct'
+                        )
+                div.bottomRow(layout='row', layout-align='end center')
+                    md-switch(ng-disabled='saving', ng-model='disabled', aria-label='disabled') Disabled
+                    md-button.md-raised.md-accent(
+                    ng-disabled='saving || !data.question'
+                    ng-click='addEditImage()'
+                    )
+                        | {{image.url || data.image ? 'Edit' : 'Add'}} Image
+                    md-button.md-raised.md-accent(ng-disabled='saving', ng-click='addAnswer()') Add Answer
+                    md-button.md-raised.md-warn(
+                    ng-disabled='saving'
+                    ng-click='cancel(addForm)'
+                    ng-if='editQueue.ids.length'
+                    )
+                        | Cancel
+                    md-button.md-raised.md-primary(ng-disabled='isSubmitDisabled()', ng-click='save(addForm)')
+                        div(ng-show='!saving') Save
+                        md-progress-circular(ng-show='saving', md-mode='indeterminate', md-diameter='20px')

@@ -1,0 +1,43 @@
+block admin_users_search
+    md-tab(label='Search')
+        md-tab-content.search.md-padding(ng-if='tabs.i === 0', ng-controller='adminUsersSearchController')
+            div(layout='row')
+                md-input-container.userId
+                    label User ID
+                    input(type='number', ng-model='query.id', ng-change='search()')
+                md-input-container.username(flex)
+                    label Username Contains
+                    input(ng-model='query.username', maxlength='255', ng-change='search()')
+                div(layout='row', layout-align='center center')
+                    div Administrator
+                    md-checkbox(ng-model='query.isAdmin', aria-label='is administrator', ng-change='search()')
+            md-data-table-toolbar
+                h2.md-title Users
+                span(flex)
+                md-button.md-fab.md-mini(ng-disabled='!selected.length', ng-click='edit()', aria-label='edit')
+                    md-tooltip Edit
+                    md-icon(class='material-icons') mode_edit
+                md-button.md-fab.md-mini.md-warn(
+                ng-disabled='!selected.length',
+                ng-click='remove()',
+                aria-label='remove'
+                )
+                    md-tooltip Remove
+                    md-icon(class='material-icons') delete
+            md-data-table-container.table
+                table(md-data-table, md-row-select='selected', md-progress='deferred')
+                    thead(md-order='query.order', md-trigger='search')
+                        tr
+                            th(name='User ID', order-by='id')
+                            th(name='Administrator', order-by='isAdmin')
+                            th(name='Username', order-by='username')
+                    tbody
+                        tr(md-auto-select, ng-repeat='user in users.rows track by user.id')
+                            td {{user.id}}
+                            td {{user.isAdmin}}
+                            td {{user.username}}
+            md-data-table-pagination(
+            md-limit='query.limit'
+            md-page='query.page'
+            md-total='{{users.count}}'
+            md-trigger='search')

@@ -1,0 +1,18 @@
+md-dialog.qnaDialog(aria-label='answer question')
+    md-toolbar
+        .md-toolbar-tools
+            h2 Answer Question
+    md-dialog-content
+        p {{qna.question}}
+        md-radio-group(ng-model='selection')
+            md-radio-button(
+            ng-repeat='answer in qna.answers track by answer.id'
+            ng-disabled='answered || submitting'
+            value='{{answer.id}}'
+            )
+                | {{answer.answer}}
+    .md-actions(layout='row')
+        md-button.md-raised.md-warn(ng-disabled='submitting', ng-click='close()') Close
+        md-button.md-raised.md-primary(ng-if='!answered', ng-disabled='!selection || submitting', ng-click='submit()')
+            div(ng-show='!submitting') Submit
+            md-progress-circular(ng-show='submitting', md-mode='indeterminate', md-diameter='20px')

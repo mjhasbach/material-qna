@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+    head
+        meta(http-equiv='X-UA-Compatible' content='IE=Edge')
+        meta(charset='UTF-8')
+        title #{appName}
+        link(rel='icon', href='favicon.ico')
+        link(rel='shortcut icon', href='favicon.ico')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+        link(
+        rel='stylesheet'
+        href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic'
+        type='text/css'
+        )
+        script(type='text/javascript' src='bundle.js')
+    body(
+    ng-app='material-qna'
+    ng-init='user = {data: #{JSON.stringify(user)}}; corsPort = #{corsPort}'
+    layout='column'
+    ng-cloak
+    )
+        div(ng-controller='mainController', layout='column', flex)
+            include toolbar
+            include auth
+            include question_grid
+            include admin
