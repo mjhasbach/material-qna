@@ -4,7 +4,12 @@ let session = require('express-session'),
     auth = module.exports = {
         passport: require('passport'),
         init: function(app, db) {
-            app.use(session({secret: 'super-secret'}));
+            app.use(session({
+                secret: 'super-secret',
+                resave: false,
+                saveUninitialized: false
+            }));
+
             app.use(auth.passport.initialize());
             app.use(auth.passport.session());
 
