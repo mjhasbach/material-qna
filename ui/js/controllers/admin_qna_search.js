@@ -18,7 +18,7 @@ class AdminQnASearchController {
                 let promise = $http.get('question/search', {params: $scope.query}).then(function({data}) {
                     $scope.questions = data;
                 }).catch(function() {
-                    toast.show('Issue searching. Try again later.');
+                    toast.show('Unable to search');
                 });
 
                 $scope.$apply(function() {
@@ -36,7 +36,7 @@ class AdminQnASearchController {
                     .then(function() {
                         $scope.search();
                     }).catch(function() {
-                        toast.show('Issue deleting QnA. Try again later.');
+                        toast.show('Unable to delete QnA');
                     });
             }
         });

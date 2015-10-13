@@ -36,7 +36,7 @@ class AdminUsersSearchController {
                     .then(function() {
                         $scope.search();
                     }).catch(function() {
-                        toast.show(`Issue deleting user${$scope.selected.length > 1 ? 's' : ''}`);
+                        toast.show(`Unable to delete user${$scope.selected.length > 1 ? 's' : ''}`);
                     });
             }
         });

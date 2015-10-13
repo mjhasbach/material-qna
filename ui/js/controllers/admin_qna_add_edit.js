@@ -84,7 +84,7 @@ class AdminQnAAddEditController {
                         toast.show('QnA saved successfully');
                         init(addForm);
                     }).catch(function() {
-                        toast.show('Issue adding QnA. Try again later.');
+                        toast.show('Unable to add QnA');
                     }).finally(function() {
                         $scope.saving = false;
                     });

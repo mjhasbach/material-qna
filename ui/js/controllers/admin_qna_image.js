@@ -29,7 +29,7 @@ class AdminQnAImageController {
                     prefetchImage($scope.image.url, $scope.corsPort).then(function(url) {
                         $scope.images.push(url);
                     }).catch(function() {
-                        return toast.show('Unable to get image. Try again later.');
+                        return toast.show('Unable to get image');
                     });
                 }
             };
@@ -66,7 +66,7 @@ class AdminQnAImageController {
                     });
                 }).catch(function() {
                     $scope.loading = false;
-                    toast.show('Unable to get image data. Try again later.');
+                    toast.show('Unable to get image');
                 });
             },
             tokenClicked(e) {

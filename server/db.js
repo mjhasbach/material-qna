@@ -3,9 +3,8 @@
 let _ = require('lodash'),
     async = require('async'),
     Sequelize = require('sequelize'),
-    passportLocalSequelize = require('passport-local-mysequelize');
-
-let config = require('./server_config'),
+    passportLocalSequelize = require('passport-local-mysequelize'),
+    config = require('./server_config'),
     sequelize = new Sequelize(config.db.name, config.db.username, config.db.password, config.db),
     db = {
         sequelize: sequelize,
