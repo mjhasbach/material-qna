@@ -1,0 +1,42 @@
+block admin_history
+    md-content.history.md-padding(
+    ng-if='setting.selected === "History"'
+    ng-controller='adminHistoryController'
+    layout='column'
+    flex
+    )
+        div(layout='row')
+            md-input-container
+                label Question ID
+                input(type='number', ng-model='query.questionId', ng-change='search()')
+            md-input-container
+                label User ID
+                input(type='number', ng-model='query.UserId', maxlength='255', ng-change='search()')
+            md-datepicker(ng-model='query.from', md-placeholder='From Date', ng-change='search()')
+            md-datepicker(ng-model='query.to', md-placeholder='To Date', ng-change='search()')
+        md-data-table-toolbar
+            h2.md-title History
+            span(flex)
+            md-button.md-fab.md-mini.md-warn(ng-disabled='!selected.length', ng-click='remove()', aria-label='remove')
+                md-tooltip Remove
+                md-icon(class='material-icons') delete
+        md-data-table-container.table
+            table(md-data-table, md-row-select='selected', md-progress='deferred')
+                thead(md-order='query.order', md-trigger='search')
+                    tr
+                        th(name='Username', order-by='UserId')
+                        th(name='Question', order-by='questionId')
+                        th(name='Answer', order-by='answerId')
+                        th(name='Date', order-by='updatedAt')
+                tbody
+                    tr(md-auto-select, ng-repeat='item in history.rows track by item.questionId')
+                        td {{item.User.username}}
+                        td {{item.question.question}}
+                        td {{item.answer.answer}}
+                        td {{item.formattedDate}}
+        md-data-table-pagination(
+        md-limit='query.limit'
+        md-page='query.page'
+        md-total='{{history.count}}'
+        md-trigger='search'
+        )

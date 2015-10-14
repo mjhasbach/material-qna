@@ -9,6 +9,10 @@ class AdminSidenavController {
                 {
                     name: 'QnA',
                     icon: 'question_answer'
+                },
+                {
+                    name: 'History',
+                    icon: 'history'
                 }
             ],
             itemClicked(setting) {

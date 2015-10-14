@@ -97,12 +97,6 @@ let _ = require('lodash'),
 
             });
 
-            app.put('/answeredQuestion', routes.isAuthenticated, function(req, res) {
-                db.answeredQuestion.add(req, function(err) {
-                    res.status(err ? 500 : 200).send(err ? err.message : null);
-                });
-            });
-
             app.get('/question/grid', routes.isAuthenticated, function(req, res) {
                 db.question.getGridData(req, function(err, gridData) {
                     res.status(err ? 500 : 200).send(err ? err.message : gridData);
@@ -142,6 +136,24 @@ let _ = require('lodash'),
             app.get('/user/search', routes.isAdmin, function(req, res) {
                 db.user.search(req, function(err, users) {
                     res.status(err ? 500 : 200).send(err ? err.message : users);
+                });
+            });
+
+            app.put('/answeredQuestion', routes.isAuthenticated, function(req, res) {
+                db.answeredQuestion.add(req, function(err) {
+                    res.status(err ? 500 : 200).send(err ? err.message : null);
+                });
+            });
+
+            app.delete('/answeredQuestion', routes.isAdmin, function(req, res) {
+                db.answeredQuestion.remove(_.isString(req.query.ids) ? [req.query.ids] : req.query.ids, function(err) {
+                    res.status(err ? 500 : 200).send(err ? err.message : null);
+                });
+            });
+
+            app.get('/answeredQuestion/search', routes.isAdmin, function(req, res) {
+                db.answeredQuestion.search(req, function(err, answeredQuestions) {
+                    res.status(err ? 500 : 200).send(err ? err.message : answeredQuestions);
                 });
             });
 

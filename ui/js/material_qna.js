@@ -25,6 +25,7 @@ import AdminQnAAddEditController from './controllers/admin_qna_add_edit';
 import AdminQnASearchController from './controllers/admin_qna_search';
 import AdminQnAUploadController from './controllers/admin_qna_upload';
 import AdminQnAImageController from './controllers/admin_qna_image';
+import AdminHistoryController from './controllers/admin_history';
 import '../../node_modules/highlight.js/styles/rainbow';
 import '../../node_modules/angular-material/angular-material.css';
 import '../../node_modules/angular-material-data-table/dist/md-data-table.css';
@@ -59,4 +60,5 @@ angular
     .controller('adminQnAAddEditController', AdminQnAAddEditController)
     .controller('adminQnAUploadController', AdminQnAUploadController)
     .controller('adminQnASearchController', AdminQnASearchController)
-    .controller('adminQnAImageController', AdminQnAImageController);
+    .controller('adminQnAImageController', AdminQnAImageController)
+    .controller('adminHistoryController', AdminHistoryController);

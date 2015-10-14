@@ -2,6 +2,7 @@
 
 let _ = require('lodash'),
     async = require('async'),
+    moment = require('moment'),
     Sequelize = require('sequelize'),
     passportLocalSequelize = require('passport-local-mysequelize'),
     config = require('./server_config'),
@@ -57,6 +58,9 @@ let _ = require('lodash'),
                     }
                 }
             })
+        },
+        getOrder(req) {
+            return [[req.query.order.replace('-', ''), _.contains(req.query.order, '-') ? 'DESC' : 'ASC']];
         },
         qna: {
             mapAnswers(data, question) {
@@ -184,7 +188,7 @@ let _ = require('lodash'),
             },
             search(req, cb) {
                 db.models.question.findAndCountAll({
-                    order: [[req.query.order.replace('-', ''), _.contains(req.query.order, '-') ? 'DESC' : 'ASC']],
+                    order: db.getOrder(req),
                     attributes: ['id', 'disabled', 'question'],
                     offset: (req.query.page - 1) * req.query.limit,
                     limit: req.query.limit,
@@ -205,6 +209,52 @@ let _ = require('lodash'),
                     .create(_.merge(req.body, {UserId: req.user.get('id')}))
                     .then(function() {cb();})
                     .catch(cb);
+            },
+            remove(ids, cb) {
+                db.models.answeredQuestion
+                    .destroy({where: {questionId: {$in: ids}}})
+                    .then(function() {cb();})
+                    .catch(cb);
+            },
+            search(req, cb) {
+                db.models.answeredQuestion.findAndCountAll({
+                    order: db.getOrder(req),
+                    attributes: [
+                        'questionId',
+                        'updatedAt',
+                        [
+                            sequelize.fn('DATE_FORMAT', sequelize.col('answeredQuestion.updatedAt'), '%m/%d/%Y'),
+                            'formattedDate'
+                        ]
+                    ],
+                    offset: (req.query.page - 1) * req.query.limit,
+                    limit: req.query.limit,
+                    include: [
+                        {
+                            model: db.models.user,
+                            attributes: ['username']
+                        },
+                        {
+                            model: db.models.question,
+                            attributes: ['question']
+                        },
+                        {
+                            model: db.models.answer,
+                            attributes: ['answer']
+                        }
+                    ],
+                    where: _.omit({
+                        questionId: req.query.questionId ? req.query.questionId : null,
+                        answerId: req.query.answerId ? req.query.answerId : null,
+                        UserId: req.query.UserId ? req.query.UserId : null,
+                        updatedAt: req.query.from || req.query.to ? _.omit({
+                            $gt: req.query.from ? new Date(req.query.from) : null,
+                            $lt: req.query.to ? moment(req.query.to).add(1, 'day').toDate() : null
+                        }, _.isNull) : null
+                    }, _.isNull)
+                }).then(function(answeredQuestions) {
+                    cb(null, answeredQuestions);
+                }).catch(cb);
             }
         },
         user: {
@@ -229,7 +279,7 @@ let _ = require('lodash'),
             },
             search(req, cb) {
                 db.models.user.findAndCountAll({
-                    order: [[req.query.order.replace('-', ''), _.contains(req.query.order, '-') ? 'DESC' : 'ASC']],
+                    order: db.getOrder(req),
                     attributes: ['id', 'isAdmin', 'username'],
                     offset: (req.query.page - 1) * req.query.limit,
                     limit: req.query.limit,
@@ -250,6 +300,8 @@ db.models.question.hasOne(db.models.correctAnswer, {onDelete: 'cascade', foreign
 db.models.question.belongsToMany(db.models.user, {through: db.models.answeredQuestion, onDelete: 'cascade'});
 db.models.answer.belongsTo(db.models.question);
 db.models.correctAnswer.belongsTo(db.models.answer);
+db.models.answeredQuestion.belongsTo(db.models.user);
+db.models.answeredQuestion.belongsTo(db.models.question);
 db.models.answeredQuestion.belongsTo(db.models.answer);
 
 sequelize.sync();

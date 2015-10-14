@@ -53,15 +53,15 @@ button > md-progress-circular {
 }
 
 .admin > md-sidenav {
-    min-width: 155px;
-    max-width: 155px;
+    min-width: 167px;
+    max-width: 167px;
 }
 
-.admin > md-sidenav .Users {
+.admin > md-sidenav .Users, .admin > md-sidenav .History {
     margin-top: 4px !important;
 }
 
-.admin .users .search .userId, .admin .qna .search .questionId {
+.admin .users .search .userId, .admin .qna .search .questionId, .admin .history md-input-container {
     width: 107px;
 }
 
@@ -175,6 +175,10 @@ button > md-progress-circular {
     -moz-animation: fadeOut 1.0s linear;
     -o-animation: fadeOut 1.0s linear;
     animation: fadeOut 1.0s linear;
+}
+
+.admin .history md-datepicker {
+    margin-top: 12px;
 }
 
 @keyframes fadeIn {
