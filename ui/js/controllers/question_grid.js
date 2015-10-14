@@ -5,7 +5,7 @@ import contains from 'lodash/collection/contains';
 import qnaDialogTemplate from '../../templates/qna_dialog';
 
 class QuestionGridController {
-    constructor($scope, $http, $mdDialog, randomImage, prefetchImage, toast) {
+    constructor($scope, $http, $window, $mdDialog, randomImage, prefetchImage, toast) {
         let $content = angular.element(document.querySelector('.questionGrid')),
             addImage = function(url) {
                 this.image = url;
@@ -90,6 +90,7 @@ class QuestionGridController {
         });
 
         $content.bind('scroll', getImagesWhileGridHasVisibleEmptySpace);
+        angular.element($window).bind('resize', getImagesWhileGridHasVisibleEmptySpace);
 
         $scope.$watch('view.current', function(newView) {
             if (newView === 'qna') {
@@ -102,6 +103,7 @@ class QuestionGridController {
 QuestionGridController.$inject = [
     '$scope',
     '$http',
+    '$window',
     '$mdDialog',
     'randomImageFactory',
     'prefetchImageFactory',
