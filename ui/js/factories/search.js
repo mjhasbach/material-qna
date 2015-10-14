@@ -33,7 +33,7 @@ function SearchFactory($http, toast) {
                 }).then(function() {
                     $scope.search();
                 }).catch(function() {
-                    toast.show(`Unable to delete ${settings.model}`);
+                    toast.show(`Unable to delete the selected item(s)`);
                 });
             }
         });
