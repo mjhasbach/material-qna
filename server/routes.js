@@ -6,7 +6,6 @@ let _ = require('lodash'),
     multer = require('multer'),
     express = require('express'),
     bodyParser = require('body-parser'),
-    cookieParser = require('cookie-parser'),
     imageSearch = require('./image_search'),
     config = require('./server_config'),
     routes = module.exports = {
@@ -27,7 +26,6 @@ let _ = require('lodash'),
         init: function(app, auth, db) {
             app.set('view engine', 'jade');
             app.use(bodyParser.json());
-            app.use(cookieParser());
             app.use(express.static(path.join(__dirname, '../', 'ui', 'build')));
 
             app.get('/', function(req, res) {
