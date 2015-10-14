@@ -29,7 +29,7 @@ block admin_history
                         th(name='Answer', order-by='answerId')
                         th(name='Date', order-by='updatedAt')
                 tbody
-                    tr(md-auto-select, ng-repeat='item in history.rows track by item.questionId')
+                    tr(md-auto-select, ng-repeat='item in data.rows track by item.questionId')
                         td {{item.User.username}}
                         td {{item.question.question}}
                         td {{item.answer.answer}}
@@ -37,6 +37,6 @@ block admin_history
         md-data-table-pagination(
         md-limit='query.limit'
         md-page='query.page'
-        md-total='{{history.count}}'
+        md-total='{{data.count}}'
         md-trigger='search'
         )

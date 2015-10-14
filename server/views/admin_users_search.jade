@@ -32,12 +32,12 @@ block admin_users_search
                             th(name='Administrator', order-by='isAdmin')
                             th(name='Username', order-by='username')
                     tbody
-                        tr(md-auto-select, ng-repeat='user in users.rows track by user.id')
+                        tr(md-auto-select, ng-repeat='user in data.rows track by user.id')
                             td {{user.id}}
                             td {{user.isAdmin}}
                             td {{user.username}}
             md-data-table-pagination(
             md-limit='query.limit'
             md-page='query.page'
-            md-total='{{users.count}}'
+            md-total='{{data.count}}'
             md-trigger='search')

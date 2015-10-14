@@ -35,13 +35,13 @@ block admin_qna_search
                             th(name='Disabled', order-by='disabled')
                             th(name='Question', order-by='question')
                     tbody
-                        tr(md-auto-select, ng-repeat='question in questions.rows track by question.id')
+                        tr(md-auto-select, ng-repeat='question in data.rows track by question.id')
                             td {{question.id}}
                             td {{question.disabled}}
                             td {{question.question}}
             md-data-table-pagination(
             md-limit='query.limit'
             md-page='query.page'
-            md-total='{{questions.count}}'
+            md-total='{{data.count}}'
             md-trigger='search'
             )

@@ -8,6 +8,7 @@ import ngFileUpload from 'ng-file-upload';
 import theme from './theme';
 import AuthFactory from './factories/auth';
 import PrefetchImageFactory from './factories/prefetch_image';
+import SearchFactory from './factories/search';
 import RandomImageFactory from './factories/random_image';
 import ToastFactory from './factories/toast';
 import MainController from './controllers/main';
@@ -44,6 +45,7 @@ angular
     .config(theme)
     .factory('authFactory', AuthFactory)
     .factory('prefetchImageFactory', PrefetchImageFactory)
+    .factory('searchFactory', SearchFactory)
     .factory('randomImageFactory', RandomImageFactory)
     .factory('toastFactory', ToastFactory)
     .controller('mainController', MainController)
