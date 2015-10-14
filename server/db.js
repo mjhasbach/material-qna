@@ -179,12 +179,6 @@ let _ = require('lodash'),
                         });
                     }).catch(cb);
                 }).catch(cb);
-            },
-            remove(ids, cb) {
-                db.models.question
-                    .destroy({where: {id: {$in: ids}}})
-                    .then(function() {cb();})
-                    .catch(cb);
             }
         },
         question: {
@@ -210,6 +204,12 @@ let _ = require('lodash'),
                         cb(null, gridData);
                     }).catch(cb);
                 }).catch(cb);
+            },
+            remove(ids, cb) {
+                db.models.question
+                    .destroy({where: {id: {$in: ids}}})
+                    .then(function() {cb();})
+                    .catch(cb);
             },
             search(req, cb) {
                 db.models.question.findAndCountAll({

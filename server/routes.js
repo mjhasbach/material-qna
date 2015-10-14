@@ -72,12 +72,6 @@ let _ = require('lodash'),
                 });
             });
 
-            app.delete('/qna', routes.isAdmin, function(req, res) {
-                db.qna.remove(_.isString(req.query.ids) ? [req.query.ids] : req.query.ids, function(err) {
-                    res.status(err ? 500 : 200).send(err ? err.message : null);
-                });
-            });
-
             app.put('/qna', routes.isAdmin, multer().single('qna'), function(req, res) {
                 if (req.body.id) {
                     db.qna.edit(req.body, function(err) {
@@ -95,6 +89,12 @@ let _ = require('lodash'),
                     });
                 }
 
+            });
+
+            app.delete('/question', routes.isAdmin, function(req, res) {
+                db.question.remove(_.isString(req.query.ids) ? [req.query.ids] : req.query.ids, function(err) {
+                    res.status(err ? 500 : 200).send(err ? err.message : null);
+                });
             });
 
             app.get('/question/grid', routes.isAuthenticated, function(req, res) {
