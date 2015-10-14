@@ -52,7 +52,7 @@ block admin_qna_add
                         aria-label='mark answer {{$index + 1}} as correct'
                         )
                 div.bottomRow(layout='row', layout-align='end center')
-                    md-switch(ng-disabled='saving', ng-model='disabled', aria-label='disabled') Disabled
+                    md-switch(ng-disabled='saving', ng-model='data.disabled', aria-label='disabled') Disabled
                     md-button.md-raised.md-accent(
                     ng-disabled='saving || !data.question'
                     ng-click='addEditImage()'
