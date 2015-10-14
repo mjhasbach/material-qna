@@ -32,20 +32,20 @@ class QuestionGridController {
                 without(noVisibleEmptySpace, false).length === noVisibleEmptySpace.length);
             },
             getImagesWhileGridHasVisibleEmptySpace = function() {
-                let {view, gettingImages, imageFail, placeholderFail} = $scope;
+                let {view, gettingImages, imageFail, placeholderFail, corsPort, questions} = $scope;
 
                 if (view.current === 'qna' && !gettingImages && !imageFail && !placeholderFail && gridHasVisibleEmptySpace()) {
                     $scope.gettingImages = true;
                     $scope.noQuestions = false;
 
-                    $http.get('question/grid', {params: {exclude: map($scope.questions, 'id')}})
+                    $http.get('question/grid', {params: {exclude: map(questions, 'id')}})
                         .then(function({data}) {
                             if (data) {
-                                return prefetchImage(data.image || randomImage(), $scope.corsPort)
+                                return prefetchImage(data.image || randomImage(), corsPort)
                                     .then(addImage.bind(data))
                                     .catch(function() {
                                         if (data.image) {
-                                            return prefetchImage(randomImage(), $scope.corsPort)
+                                            return prefetchImage(randomImage(), corsPort)
                                                 .then(addImage.bind(data))
                                                 .catch(handlePlaceholderImgErr);
                                         }
@@ -54,7 +54,7 @@ class QuestionGridController {
                                     });
                             }
 
-                            if (!$scope.questions.length) {
+                            if (!questions.length) {
                                 $scope.noQuestions = true;
                             }
 
