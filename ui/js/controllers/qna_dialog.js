@@ -9,9 +9,15 @@ class QnAController {
                 $scope.submitting = true;
 
                 $http.put('answeredQuestion', {answerId: $scope.selection, questionId: qna.id}).then(function() {
-                    let adverb = `${qna.correctAnswer.answerId === parseInt($scope.selection) ? '' : 'in'}correctly`;
+                    if (qna.correctAnswer) {
+                        let adverb = `${qna.correctAnswer.answerId === parseInt($scope.selection) ? '' : 'in'}correctly`;
 
-                    toast.show(`Question answered ${adverb}`);
+                        toast.show(`Question answered ${adverb}`);
+                    }
+                    else {
+                        toast.show('Your response has been recorded');
+                    }
+
                     $scope.answered = true;
                 }).catch(function() {
                     toast.show('Unable to answer question');

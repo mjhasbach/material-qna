@@ -8,9 +8,9 @@ block admin_qna_upload
             md-progress-circular(ng-show='uploading', md-mode='indeterminate')
             div
                 | Click or drag-and-drop anywhere in this tab to upload a QnA file. The file must be a JSON array of
-                | objects. Each object must have question (string), answers (array of strings), and correctAnswer
-                | (number) properties. The correctAnswer property is the 0-based index of the correct answer in the
-                | answers array. The object may also contain image (string) and disabled (boolean) properties. The image
-                | property may contain up to 2000 characters, and the remaining strings are limited to 255 characters.
+                | objects. Each object must have question (string) and answers (array of strings) properties. The object
+                | may also contain correctAnswer (number), image (string), and disabled (boolean) properties. The
+                | correctAnswer property is the 0-based index of the correct answer in the answers array. The image
+                | property is a URL limited to 2000 characters, and the remaining strings are limited to 255 characters.
                 | For example:
             div.example.md-whiteframe-z2(hljs, source='example')

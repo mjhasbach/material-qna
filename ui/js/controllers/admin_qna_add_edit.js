@@ -12,9 +12,11 @@ class AdminQnAAddEditController {
             $timeout(function() {
                 if ($scope.editQueue.ids.length) {
                     $http.get('qna', {params: {id: $scope.editQueue.ids[0]}}).then(function({data}) {
+                        Object.assign(data, {correctAnswer: data.correctAnswer || {}});
                         Object.assign($scope, {
                             data,
-                            saving: false
+                            saving: false,
+                            hasCorrectAnswer: !!data.correctAnswer.id
                         });
                     }).catch(function() {
                         toast.show('Unable to get QnA data');
@@ -22,6 +24,7 @@ class AdminQnAAddEditController {
                 }
                 else {
                     Object.assign($scope, {
+                        hasCorrectAnswer: false,
                         saving: false,
                         data: {
                             disabled: false,
@@ -68,8 +71,8 @@ class AdminQnAAddEditController {
                 return $scope.saving
                     || !$scope.data
                     || !$scope.data.question
-                    || !$scope.data.correctAnswer.answerId
-                    || any($scope.data.answers, {answer: ''});
+                    || any($scope.data.answers, {answer: ''})
+                    || ($scope.hasCorrectAnswer && !$scope.data.correctAnswer.answerId);
             },
             cancel(addForm) {
                 $scope.editQueue.ids.length = 0;
@@ -78,16 +81,18 @@ class AdminQnAAddEditController {
             },
             save(addForm) {
                 $scope.saving = true;
-                $http.put('qna', Object.assign($scope.data, {image: $scope.image.url || $scope.data.image}))
-                    .then(function() {
-                        $scope.editQueue.ids.shift();
-                        toast.show('QnA saved successfully');
-                        init(addForm);
-                    }).catch(function() {
-                        toast.show('Unable to add QnA');
-                    }).finally(function() {
-                        $scope.saving = false;
-                    });
+                $http.put('qna', Object.assign($scope.data, {
+                    image: $scope.image.url || $scope.data.image,
+                    correctAnswer: $scope.hasCorrectAnswer ? $scope.data.correctAnswer : null
+                })).then(function() {
+                    $scope.editQueue.ids.shift();
+                    toast.show('QnA saved successfully');
+                    init(addForm);
+                }).catch(function() {
+                    toast.show('Unable to add QnA');
+                }).finally(function() {
+                    $scope.saving = false;
+                });
             }
         });
 

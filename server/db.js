@@ -9,8 +9,13 @@ let _ = require('lodash'),
     db = {
         sequelize: sequelize,
         models: {
-            correctAnswer: sequelize.define('correctAnswer'),
             answeredQuestion: sequelize.define('answeredQuestion'),
+            correctAnswer: sequelize.define('correctAnswer', {
+                questionId: {
+                    type: Sequelize.INTEGER,
+                    unique: true
+                }
+            }),
             user: passportLocalSequelize.defineUser(
                 sequelize,
                 {
@@ -64,8 +69,10 @@ let _ = require('lodash'),
                 });
             },
             isCorrectAnswer(answer, data) {
-                let correctAnswer = data.answers[data.correctAnswer] ||
-                    _.result(_.find(data.answers, {id: data.correctAnswer.answerId}), 'answer');
+                let correctAnswer = data.correctAnswer ?
+                    data.answers[data.correctAnswer] ||
+                    _.result(_.find(data.answers, {id: data.correctAnswer.answerId}), 'answer') :
+                    false;
 
                 return answer.get('answer') === correctAnswer;
             },
@@ -117,7 +124,7 @@ let _ = require('lodash'),
                                     }
 
                                     db.models.correctAnswer
-                                        .update({answerId: answer.get('id')}, {where: {questionId: question.get('id')}})
+                                        .upsert({questionId: question.get('id'), answerId: answer.get('id')})
                                         .then(function() {done();})
                                         .catch(done);
                                 }).catch(done);
@@ -132,7 +139,16 @@ let _ = require('lodash'),
                                     answer: {$notIn: _.map(data.answers, 'answer')}
                                 }
                             }).then(function() {
-                                cb();
+                                if (data.correctAnswer) {
+                                    cb();
+                                }
+                                else {
+                                    db.models.correctAnswer.destroy({
+                                        where: {questionId: question.get('id')}
+                                    }).then(function() {
+                                        cb();
+                                    }).catch(cb);
+                                }
                             }).catch(cb);
                         });
                     }).catch(cb);
@@ -230,7 +246,7 @@ let _ = require('lodash'),
     };
 
 db.models.question.hasMany(db.models.answer);
-db.models.question.hasOne(db.models.correctAnswer, {onDelete: 'cascade'});
+db.models.question.hasOne(db.models.correctAnswer, {onDelete: 'cascade', foreignKey: 'questionId'});
 db.models.question.belongsToMany(db.models.user, {through: db.models.answeredQuestion, onDelete: 'cascade'});
 db.models.answer.belongsTo(db.models.question, {onDelete: 'cascade'});
 db.models.correctAnswer.belongsTo(db.models.answer);

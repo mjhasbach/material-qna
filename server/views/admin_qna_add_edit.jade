@@ -19,7 +19,7 @@ block admin_qna_add
                     )
                     div(ng-messages='addForm.question.$error')
                         div(ng-message='required', ng-if='addForm.question.$touched') This is required
-                div(layout='row', layout-align='end center') Correct Answer
+                div(ng-show='hasCorrectAnswer', layout='row', layout-align='end center') Correct Answer
                 div(ng-repeat='answer in data.answers track by answer.id', layout='row')
                     div(layout='row', layout-align='center center')
                         //todo resolve ink animation issue
@@ -44,15 +44,18 @@ block admin_qna_add
                         )
                         div(ng-messages='addForm["answer" + $index].$error')
                             div(ng-message='required', ng-if='addForm["answer" + $index].$touched') This is required
-                    .correctAnswerContainer(layout='row', layout-align='center center')
+                    .correctAnswerContainer(ng-show='hasCorrectAnswer', layout='row', layout-align='center center')
                         md-checkbox.correctAnswer(
                         ng-disabled='saving'
                         ng-checked='data.correctAnswer.answerId === answer.id'
                         ng-click='selectAnswer(answer.id)'
                         aria-label='mark answer {{$index + 1}} as correct'
                         )
-                div.bottomRow(layout='row', layout-align='end center')
+                div(layout='row', layout-align='end center')
+                    md-switch(ng-disabled='saving', ng-model='hasCorrectAnswer', aria-label='disabled')
+                        | Has Correct Answer
                     md-switch(ng-disabled='saving', ng-model='data.disabled', aria-label='disabled') Disabled
+                div(layout='row', layout-align='end center')
                     md-button.md-raised.md-accent(
                     ng-disabled='saving || !data.question'
                     ng-click='addEditImage()'
