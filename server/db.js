@@ -245,10 +245,10 @@ let _ = require('lodash'),
         }
     };
 
-db.models.question.hasMany(db.models.answer);
+db.models.question.hasMany(db.models.answer, {onDelete: 'cascade'});
 db.models.question.hasOne(db.models.correctAnswer, {onDelete: 'cascade', foreignKey: 'questionId'});
 db.models.question.belongsToMany(db.models.user, {through: db.models.answeredQuestion, onDelete: 'cascade'});
-db.models.answer.belongsTo(db.models.question, {onDelete: 'cascade'});
+db.models.answer.belongsTo(db.models.question);
 db.models.correctAnswer.belongsTo(db.models.answer);
 db.models.answeredQuestion.belongsTo(db.models.answer);
 
