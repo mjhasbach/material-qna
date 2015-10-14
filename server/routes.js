@@ -26,7 +26,7 @@ let _ = require('lodash'),
         },
         init: function(app, auth, db) {
             app.set('view engine', 'jade');
-            app.use(bodyParser());
+            app.use(bodyParser.json());
             app.use(cookieParser());
             app.use(express.static(path.join(__dirname, '../', 'ui', 'build')));
 
