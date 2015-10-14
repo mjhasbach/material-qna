@@ -59,6 +59,10 @@ class AdminQnAAddEditController {
                 });
             },
             deleteAnswer(i) {
+                if ($scope.data.answers[i].id === $scope.data.correctAnswer.answerId) {
+                    $scope.data.correctAnswer.answerId = null;
+                }
+
                 $scope.data.answers.splice(i, 1);
             },
             selectAnswer(id) {
