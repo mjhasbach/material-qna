@@ -32,10 +32,11 @@ class QuestionGridController {
                 without(noVisibleEmptySpace, false).length === noVisibleEmptySpace.length);
             },
             getImagesWhileGridHasVisibleEmptySpace = function() {
-                let {view, gettingImages, noQuestions, imageFail, placeholderFail} = $scope;
+                let {view, gettingImages, imageFail, placeholderFail} = $scope;
 
-                if (view.current === 'qna' && !gettingImages && !noQuestions && !imageFail && !placeholderFail && gridHasVisibleEmptySpace()) {
+                if (view.current === 'qna' && !gettingImages && !imageFail && !placeholderFail && gridHasVisibleEmptySpace()) {
                     $scope.gettingImages = true;
+                    $scope.noQuestions = false;
 
                     $http.get('question/grid', {params: {exclude: map($scope.questions, 'id')}})
                         .then(function({data}) {
