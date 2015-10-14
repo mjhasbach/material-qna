@@ -92,12 +92,7 @@ class QuestionGridController {
 
         $content.bind('scroll', getImagesWhileGridHasVisibleEmptySpace);
         angular.element($window).bind('resize', getImagesWhileGridHasVisibleEmptySpace);
-
-        $scope.$watch('view.current', function(newView) {
-            if (newView === 'qna') {
-                getImagesWhileGridHasVisibleEmptySpace();
-            }
-        });
+        $scope.$watch('view.current', getImagesWhileGridHasVisibleEmptySpace);
     }
 }
 
