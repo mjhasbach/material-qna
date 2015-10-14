@@ -32,7 +32,7 @@ class AdminUsersSearchController {
                 $scope.tabs.i = 1;
             },
             remove() {
-                $scope.deferred = $http.delete('users', {params: {ids: pluck($scope.selected, 'id')}})
+                $scope.deferred = $http.delete('user', {params: {ids: pluck($scope.selected, 'id')}})
                     .then(function() {
                         $scope.search();
                     }).catch(function() {

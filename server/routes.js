@@ -121,7 +121,7 @@ let _ = require('lodash'),
                 });
             });
 
-            app.delete('/users', routes.isAdmin, function(req, res) {
+            app.delete('/user', routes.isAdmin, function(req, res) {
                 db.user.remove(_.isString(req.query.ids) ? [req.query.ids] : req.query.ids, function(err) {
                     res.status(err ? 500 : 200).send(err ? err.message : null);
                 });
