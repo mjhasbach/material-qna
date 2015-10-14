@@ -59,6 +59,28 @@ let _ = require('lodash'),
                 }
             })
         },
+        createAdminIfNoUsersExist() {
+            let username = 'admin',
+                password = 'password';
+
+            db.models.user.count().then(function(count) {
+                if (count < 1) {
+                    db.models.user.register(username, password, function(err, user) {
+                        if (err) {
+                            throw new Error('Unable to create administrator');
+                        }
+
+                        db.models.user.update({isAdmin: true}, {where: {id: user.get('id')}}).then(function() {
+                            console.log(`Administrator created | Username: ${username} | Password: ${password}`);
+                        }).catch(function() {
+                            throw new Error('Unable to make user an administrator');
+                        });
+                    });
+                }
+            }).catch(function() {
+                throw new Error('Unable to get user count');
+            });
+        },
         getOrder(req) {
             return [[req.query.order.replace('-', ''), _.contains(req.query.order, '-') ? 'DESC' : 'ASC']];
         },
@@ -307,6 +329,6 @@ db.models.answeredQuestion.belongsTo(db.models.user);
 db.models.answeredQuestion.belongsTo(db.models.question);
 db.models.answeredQuestion.belongsTo(db.models.answer);
 
-sequelize.sync();
+sequelize.sync().then(db.createAdminIfNoUsersExist);
 
 module.exports = db;
