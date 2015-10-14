@@ -1,5 +1,3 @@
-import isNumber from 'lodash/lang/isNumber';
-
 function ToastFactory($mdToast) {
     return {
         hide() {
@@ -10,7 +8,7 @@ function ToastFactory($mdToast) {
                 .content(message)
                 .action('OK')
                 .position('bottom right')
-                .hideDelay(isNumber(delay) ? delay : Math.pow(2, 31) - 1);
+                .hideDelay(angular.isNumber(delay) ? delay : Math.pow(2, 31) - 1);
 
             $mdToast.show(toast);
         }
