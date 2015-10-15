@@ -19,7 +19,7 @@ block admin_users_search
                     md-icon(class='material-icons') mode_edit
                 md-button.md-fab.md-mini.md-warn(
                 ng-disabled='!selected.length',
-                ng-click='remove()',
+                ng-click='remove($event)',
                 aria-label='remove'
                 )
                     md-tooltip Remove

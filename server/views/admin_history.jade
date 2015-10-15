@@ -17,7 +17,11 @@ block admin_history
         md-data-table-toolbar
             h2.md-title History
             span(flex)
-            md-button.md-fab.md-mini.md-warn(ng-disabled='!selected.length', ng-click='remove()', aria-label='remove')
+            md-button.md-fab.md-mini.md-warn(
+            ng-disabled='!selected.length'
+            ng-click='remove($event)'
+            aria-label='remove'
+            )
                 md-tooltip Remove
                 md-icon(class='material-icons') delete
         md-data-table-container.table

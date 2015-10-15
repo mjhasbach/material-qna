@@ -1,7 +1,7 @@
 import debounce from 'lodash/function/debounce';
 import pluck from 'lodash/collection/pluck';
 
-function SearchFactory($http, toast) {
+function SearchFactory($http, $mdDialog, toast) {
     return function($scope, settings) {
         Object.assign($scope, {
             selected: [],
@@ -27,13 +27,25 @@ function SearchFactory($http, toast) {
 
                 return promise;
             }, 500),
-            remove() {
-                $scope.deferred = $http.delete(settings.model, {
-                    params: {ids: pluck($scope.selected, settings.orderBy)}
-                }).then(function() {
-                    $scope.search();
-                }).catch(function() {
-                    toast.show(`Unable to delete the selected item(s)`);
+            remove(e) {
+                let title = 'Confirm Deletion',
+                    noun = `item${$scope.selected.length > 1 ? 's' : ''}`,
+                    confirm = $mdDialog.confirm()
+                        .title(title)
+                        .ariaLabel(title)
+                        .content(`Are you sure you want to delete the selected ${noun}?`)
+                        .targetEvent(e)
+                        .ok('Yes')
+                        .cancel('No');
+
+                $mdDialog.show(confirm).then(function() {
+                    $scope.deferred = $http.delete(settings.model, {
+                        params: {ids: pluck($scope.selected, settings.orderBy)}
+                    }).then(function() {
+                        $scope.search();
+                    }).catch(function() {
+                        toast.show(`Unable to delete the selected ${noun}`);
+                    });
                 });
             }
         });
@@ -42,6 +54,6 @@ function SearchFactory($http, toast) {
     }
 }
 
-SearchFactory.$inject = ['$http', 'toastFactory'];
+SearchFactory.$inject = ['$http', '$mdDialog', 'toastFactory'];
 
 export default SearchFactory;
