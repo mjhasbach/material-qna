@@ -1,7 +1,6 @@
 block admin
     div.admin(
-    ng-if='user.data && user.data.isAdmin',
-    ng-show='view.current === "admin"',
+    ng-if='user.data && user.data.isAdmin && view.current === "admin"',
     ng-controller='adminController',
     layout='row',
     flex
