@@ -28,8 +28,8 @@ The administration panel is divided into three sections:
     - `npm install`
 5. Pick a SQL dialect supported by [Sequelize](http://docs.sequelizejs.com/). If MySQL, skip this step. If not, download the appropriate client. For example (PostgreSQL):
     - `npm install pg`
-6. Rename `server/server_config_example.js` to `server_config.js` and configure the necessary options:
-7. Start the server
+6. Rename `server/server_config_example.js` to `server_config.js` and configure the necessary options
+7. Start the server:
     - `node ./server/server.js`
 
 Upon starting the server, if there are no users, an administrator will be created with a username of `admin` and password of `password`.
