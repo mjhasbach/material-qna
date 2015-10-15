@@ -103,12 +103,9 @@ let _ = require('lodash'),
                 return answer.get('answer') === correctAnswer;
             },
             get(id, cb) {
-                db.models.question.findOne({
-                    where: {id},
-                    include: [db.models.answer, db.models.correctAnswer]
-                }).then(function(qna) {
-                    cb(null, qna);
-                }).catch(cb);
+                db.models.question.findById(id, {include: [db.models.answer, db.models.correctAnswer]})
+                    .then(function(qna) {cb(null, qna);})
+                    .catch(cb);
             },
             add(data, cb) {
                 db.models.question.create(data).then(function(question) {
@@ -137,7 +134,7 @@ let _ = require('lodash'),
                 async.each(qnas, db.qna.add, cb);
             },
             edit(data, cb) {
-                db.models.question.findOne({where: {id: data.id}}).then(function(question) {
+                db.models.question.findById(data.id).then(function(question) {
                     question.update(data).then(function() {
                         let opt = {onDuplicate: 'UPDATE answer=VALUES(answer)'};
 
@@ -284,11 +281,9 @@ let _ = require('lodash'),
         },
         user: {
             get(id, cb) {
-                db.models.user
-                    .findOne({where: {id}})
-                    .then(function(user) {
-                        cb(null, user)
-                    }).catch(cb);
+                db.models.user.findById(id)
+                    .then(function(user) {cb(null, user)})
+                    .catch(cb);
             },
             edit(data, cb) {
                 db.models.user
