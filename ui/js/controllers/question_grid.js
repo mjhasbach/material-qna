@@ -69,7 +69,7 @@ class QuestionGridController {
             },
             removeDeleted = function() {
                 if ($scope.questions.length) {
-                    $http.get('question/grid/deleted', {
+                    $http.get('question/grid/invalid', {
                         params: {'ids[]': map($scope.questions, 'id')}
                     }).then(function({data}) {
                         data.forEach(function(deletedQuestionId) {

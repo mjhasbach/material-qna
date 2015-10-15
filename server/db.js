@@ -200,7 +200,7 @@ let _ = require('lodash'),
                         }).catch(cb);
                     }).catch(cb);
                 },
-                findDeleted(ids, cb) {
+                findInvalid(ids, cb) {
                     let gridIds = _.map(ids, function(id) {
                         return parseInt(id);
                     });
@@ -208,7 +208,10 @@ let _ = require('lodash'),
                     db.models.question.findAll({
                         raw: true,
                         attributes: ['id'],
-                        where: {id: {$in: gridIds}}
+                        where: {
+                            disabled: false,
+                            id: {$in: gridIds}
+                        }
                     }).then(function(answeredQuestions) {
                         cb(null, _.difference(gridIds, _.map(answeredQuestions, 'id')));
                     }).catch(cb);
