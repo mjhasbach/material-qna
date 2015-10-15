@@ -103,6 +103,12 @@ let _ = require('lodash'),
                 });
             });
 
+            app.get('/question/grid/deleted', routes.isAuthenticated, function(req, res) {
+                db.question.grid.findDeleted(req.query.ids, function(err, ids) {
+                    res.status(err ? 500 : 200).send(err ? err.message : ids);
+                });
+            });
+
             app.get('/question/search', routes.isAdmin, function(req, res) {
                 db.question.search(req, function(err, question) {
                     res.status(err ? 500 : 200).send(err ? err.message : question);

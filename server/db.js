@@ -179,6 +179,21 @@ let _ = require('lodash'),
             }
         },
         question: {
+            grid: {
+                findDeleted(ids, cb) {
+                    let gridIds = _.map(ids, function(id) {
+                        return parseInt(id);
+                    });
+
+                    db.models.question.findAll({
+                        raw: true,
+                        attributes: ['id'],
+                        where: {id: {$in: gridIds}}
+                    }).then(function(answeredQuestions) {
+                        cb(null, _.difference(gridIds, _.map(answeredQuestions, 'id')));
+                    }).catch(cb);
+                }
+            },
             getGridData(req, cb) {
                 db.models.answeredQuestion.findAll({
                     raw: true,

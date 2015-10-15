@@ -1,4 +1,5 @@
 import map from 'lodash/collection/map';
+import remove from 'lodash/array/remove';
 import without from 'lodash/array/without';
 import reject from 'lodash/collection/reject';
 import contains from 'lodash/collection/contains';
@@ -65,6 +66,21 @@ class QuestionGridController {
                             $scope.gettingImages = false;
                         });
                 }
+            },
+            removeDeleted = function() {
+                if ($scope.questions.length) {
+                    $http.get('question/grid/deleted', {
+                        params: {'ids[]': map($scope.questions, 'id')}
+                    }).then(function({data}) {
+                        data.forEach(function(deletedQuestionId) {
+                            remove($scope.questions, function(question) {
+                                return deletedQuestionId === question.id;
+                            });
+                        });
+                    }).catch(function() {
+                        toast.show('Unable to identify deleted questions');
+                    });
+                }
             };
 
         Object.assign($scope, {
@@ -92,7 +108,13 @@ class QuestionGridController {
 
         $content.bind('scroll', getImagesWhileGridHasVisibleEmptySpace);
         angular.element($window).bind('resize', getImagesWhileGridHasVisibleEmptySpace);
-        $scope.$watch('view.current', getImagesWhileGridHasVisibleEmptySpace);
+
+        $scope.$watch('view.current', function(view) {
+            if (view === 'qna') {
+                removeDeleted();
+                getImagesWhileGridHasVisibleEmptySpace();
+            }
+        });
     }
 }
 
