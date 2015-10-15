@@ -180,6 +180,26 @@ let _ = require('lodash'),
         },
         question: {
             grid: {
+                getTile(req, cb) {
+                    db.models.answeredQuestion.findAll({
+                        raw: true,
+                        attributes: ['questionId'],
+                        where: {UserId: req.user.get('id')}
+                    }).then(function(answeredQuestions) {
+                        let excludedQuestions = _.union(_.map(answeredQuestions, 'questionId'), req.query.exclude);
+
+                        db.models.question.findOne({
+                            order: [db.sequelize.fn('RAND')],
+                            attributes: ['id', 'image'],
+                            where: _.omit({
+                                disabled: false,
+                                id: excludedQuestions.length ? {$notIn: excludedQuestions} : null
+                            }, _.isNull)
+                        }).then(function(gridData) {
+                            cb(null, gridData);
+                        }).catch(cb);
+                    }).catch(cb);
+                },
                 findDeleted(ids, cb) {
                     let gridIds = _.map(ids, function(id) {
                         return parseInt(id);
@@ -193,26 +213,6 @@ let _ = require('lodash'),
                         cb(null, _.difference(gridIds, _.map(answeredQuestions, 'id')));
                     }).catch(cb);
                 }
-            },
-            getGridData(req, cb) {
-                db.models.answeredQuestion.findAll({
-                    raw: true,
-                    attributes: ['questionId'],
-                    where: {UserId: req.user.get('id')}
-                }).then(function(answeredQuestions) {
-                    let excludedQuestions = _.union(_.map(answeredQuestions, 'questionId'), req.query.exclude);
-
-                    db.models.question.findOne({
-                        order: [db.sequelize.fn('RAND')],
-                        attributes: ['id', 'image'],
-                        where: _.omit({
-                            disabled: false,
-                            id: excludedQuestions.length ? {$notIn: excludedQuestions} : null
-                        }, _.isNull)
-                    }).then(function(gridData) {
-                        cb(null, gridData);
-                    }).catch(cb);
-                }).catch(cb);
             },
             remove(ids, cb) {
                 db.models.question

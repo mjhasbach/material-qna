@@ -39,7 +39,7 @@ class QuestionGridController {
                     $scope.gettingImages = true;
                     $scope.noQuestions = false;
 
-                    $http.get('question/grid', {params: {'exclude[]': map(questions, 'id')}})
+                    $http.get('question/grid/tile', {params: {'exclude[]': map(questions, 'id')}})
                         .then(function({data}) {
                             if (data) {
                                 return prefetchImage(data.image || randomImage(), corsPort)

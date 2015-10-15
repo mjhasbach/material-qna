@@ -97,8 +97,8 @@ let _ = require('lodash'),
                 });
             });
 
-            app.get('/question/grid', routes.isAuthenticated, function(req, res) {
-                db.question.getGridData(req, function(err, gridData) {
+            app.get('/question/grid/tile', routes.isAuthenticated, function(req, res) {
+                db.question.grid.getTile(req, function(err, gridData) {
                     res.status(err ? 500 : 200).send(err ? err.message : gridData);
                 });
             });
