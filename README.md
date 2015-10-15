@@ -24,14 +24,12 @@ The administration panel is divided into three sections:
     - `git clone https://github.com/mjhasbach/material-qna.git`
 3. Enter the Material QnA project directory:
     - `cd material-qna`
-4. Download the dependencies:
+4. Download the dependencies and build the UI bundle:
     - `npm install`
-5. Build the UI bundle:
-    - `node ./node_modules/webpack/bin/webpack.js --config ./ui/webpack.config.js --colors --progress`
-6. Pick a SQL dialect supported by [Sequelize](http://docs.sequelizejs.com/). If MySQL, skip this step. If not, download the appropriate client. For example (PostgreSQL):
+5. Pick a SQL dialect supported by [Sequelize](http://docs.sequelizejs.com/). If MySQL, skip this step. If not, download the appropriate client. For example (PostgreSQL):
     - `npm install pg`
-7. Rename `server/server_config_example.js` to `server_config.js` and configure the necessary options:
-8. Start the server
+6. Rename `server/server_config_example.js` to `server_config.js` and configure the necessary options:
+7. Start the server
     - `node ./server/server.js`
 
 Upon starting the server, if there are no users, an administrator will be created with a username of `admin` and password of `password`.
