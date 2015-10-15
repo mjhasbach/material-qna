@@ -92,7 +92,7 @@ let _ = require('lodash'),
             });
 
             app.delete('/question', routes.isAdmin, function(req, res) {
-                db.question.remove(_.isString(req.query.ids) ? [req.query.ids] : req.query.ids, function(err) {
+                db.question.remove(req.query.ids, function(err) {
                     res.status(err ? 500 : 200).send(err ? err.message : null);
                 });
             });
@@ -122,7 +122,7 @@ let _ = require('lodash'),
             });
 
             app.delete('/user', routes.isAdmin, function(req, res) {
-                db.user.remove(_.isString(req.query.ids) ? [req.query.ids] : req.query.ids, function(err) {
+                db.user.remove(req.query.ids, function(err) {
                     res.status(err ? 500 : 200).send(err ? err.message : null);
                 });
             });
@@ -146,7 +146,7 @@ let _ = require('lodash'),
             });
 
             app.delete('/answeredQuestion', routes.isAdmin, function(req, res) {
-                db.answeredQuestion.remove(_.isString(req.query.ids) ? [req.query.ids] : req.query.ids, function(err) {
+                db.answeredQuestion.remove(req.query.ids, function(err) {
                     res.status(err ? 500 : 200).send(err ? err.message : null);
                 });
             });

@@ -185,10 +185,7 @@ let _ = require('lodash'),
                     attributes: ['questionId'],
                     where: {UserId: req.user.get('id')}
                 }).then(function(answeredQuestions) {
-                    let excludedQuestions = _.union(
-                        _.map(answeredQuestions, 'questionId'),
-                        _.isString(req.query.exclude) ? [req.query.exclude] : req.query.exclude
-                    );
+                    let excludedQuestions = _.union(_.map(answeredQuestions, 'questionId'), req.query.exclude);
 
                     db.models.question.findOne({
                         order: [db.sequelize.fn('RAND')],

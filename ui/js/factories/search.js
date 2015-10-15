@@ -40,7 +40,7 @@ function SearchFactory($http, $mdDialog, toast) {
 
                 $mdDialog.show(confirm).then(function() {
                     $scope.deferred = $http.delete(settings.model, {
-                        params: {ids: pluck($scope.selected, settings.orderBy)}
+                        params: {'ids[]': pluck($scope.selected, settings.orderBy)}
                     }).then(function() {
                         $scope.search();
                     }).catch(function() {
