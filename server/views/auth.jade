@@ -16,7 +16,6 @@ block auth
                     name='username'
                     ng-model='username'
                     ng-disabled='authenticating'
-                    ng-keydown='keydown($event, authForm)'
                     type='text'
                     )
                     div(ng-messages='authForm.username.$error')
@@ -28,7 +27,6 @@ block auth
                     name='password'
                     ng-model='password'
                     ng-disabled='authenticating'
-                    ng-keydown='keydown($event, authForm)'
                     type='password'
                     )
                     div(ng-messages='authForm.password.$error')

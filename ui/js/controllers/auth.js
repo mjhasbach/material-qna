@@ -1,11 +1,6 @@
 class AuthController {
     constructor($scope, $timeout, auth, toast) {
         Object.assign($scope, {
-            keydown(e, authForm) {
-                if (e.which === 13) {
-                    $scope.authenticate(authForm);
-                }
-            },
             areButtonsDisabled() {
                 return $scope.authenticating || !$scope.username || !$scope.password;
             },
