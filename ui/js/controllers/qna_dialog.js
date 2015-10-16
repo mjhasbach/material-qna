@@ -10,9 +10,9 @@ export default class {
             submit() {
                 $scope.submitting = true;
 
-                $http.put('answeredQuestion', {answerId: $scope.selection, questionId: qna.id}).then(function() {
+                $http.put('answeredQuestion', {answerId: $scope.selected, questionId: qna.id}).then(function() {
                     if (qna.correctAnswer) {
-                        let adverb = `${qna.correctAnswer.answerId === parseInt($scope.selection) ? '' : 'in'}correctly`;
+                        let adverb = `${qna.correctAnswer.answerId === parseInt($scope.selected) ? '' : 'in'}correctly`;
 
                         toast.show(`Question answered ${adverb}`);
                     }

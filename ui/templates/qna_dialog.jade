@@ -4,7 +4,7 @@ md-dialog.qnaDialog(aria-label='answer question')
             h2 Answer Question
     md-dialog-content
         p {{qna.question}}
-        md-radio-group(ng-model='selection')
+        md-radio-group(ng-model='selected')
             md-radio-button(
             ng-repeat='answer in qna.answers track by answer.id'
             ng-disabled='answered || submitting'
@@ -13,6 +13,6 @@ md-dialog.qnaDialog(aria-label='answer question')
                 | {{answer.answer}}
     .md-actions(layout='row')
         md-button.md-raised.md-warn(ng-disabled='submitting', ng-click='close()') Close
-        md-button.md-raised.md-primary(ng-if='!answered', ng-disabled='!selection || submitting', ng-click='submit()')
+        md-button.md-raised.md-primary(ng-if='!answered', ng-disabled='!selected || submitting', ng-click='submit()')
             div(ng-show='!submitting') Submit
             md-progress-circular(ng-show='submitting', md-mode='indeterminate', md-diameter='20px')
