@@ -45,6 +45,7 @@ export default class {
         };
 
         Object.assign($scope, {
+            data: {},
             addEditImage() {
                 Object.assign($scope.image, {
                     question: $scope.data.question,
@@ -75,7 +76,6 @@ export default class {
             },
             isSubmitDisabled() {
                 return $scope.saving
-                    || !$scope.data
                     || !$scope.data.question
                     || any($scope.data.answers, {answer: ''})
                     || ($scope.hasCorrectAnswer && !$scope.data.correctAnswer.answerId);
