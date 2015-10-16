@@ -1,3 +1,5 @@
+import property from 'lodash/utility/property';
+
 export default class {
     constructor($scope, auth, toast) {
         'ngInject';
@@ -17,7 +19,7 @@ export default class {
                 name: 'Settings',
                 icon: 'settings',
                 get show() {
-                    return $scope.user.data && $scope.user.data.isAdmin && $scope.view.current !== 'admin';
+                    return property('data.isAdmin')($scope.user) && $scope.view.current !== 'admin';
                 },
                 onClick: function() {
                     $scope.view.current = 'admin';
