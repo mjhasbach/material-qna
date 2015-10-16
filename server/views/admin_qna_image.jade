@@ -35,7 +35,7 @@ block admin_qna_image
                 div Click any of the below QnA tokens to add them to the search.
                 //todo improve chips, see https://github.com/angular/material/issues/4938
                 md-chips.md-readonly(ng-model='tokens', readonly='true')
-                    md-chip-template(ng-click='tokenClicked($event)', style='padding-right: 0px') {{$chip}}
+                    md-chip-template(ng-click='tokenClicked($event)') {{$chip}}
             div(layout='row', layout-align='end center')
                 md-button.md-raised.md-accent(
                 ng-click='search()'
