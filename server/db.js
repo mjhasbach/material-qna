@@ -102,10 +102,16 @@ let _ = require('lodash'),
 
                 return answer.get('answer') === correctAnswer;
             },
-            get(id, cb) {
-                db.models.question.findById(id, {include: [db.models.answer, db.models.correctAnswer]})
-                    .then(function(qna) {cb(null, qna);})
-                    .catch(cb);
+            get(req, cb) {
+                db.models.question.findOne({
+                    include: [db.models.answer, db.models.correctAnswer],
+                    where: _.omit({
+                        id: req.query.id,
+                        disabled: req.query.enabled === 'true' ? false : null
+                    }, _.isNull)
+                }).then(function(qna) {
+                    cb(null, qna);
+                }).catch(cb);
             },
             add(data, cb) {
                 db.models.question.create(data).then(function(question) {

@@ -67,7 +67,7 @@ let _ = require('lodash'),
             });
 
             app.get('/qna', routes.isAdmin, function(req, res) {
-                db.qna.get(req.query.id, function(err, qna) {
+                db.qna.get(req, function(err, qna) {
                     res.status(err ? 500 : 200).send(err ? err.message : qna);
                 });
             });

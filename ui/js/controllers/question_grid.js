@@ -88,22 +88,29 @@ export default class {
         Object.assign($scope, {
             questions: [],
             imageClicked(e, id) {
-                $http.get('qna', {params: {id}}).then(function({data}) {
-                    $mdDialog.show({
-                        clickOutsideToClose: true,
-                        controller: 'qnaDialogController',
-                        template: qnaDialogTemplate(),
-                        parent: angular.element(document.body),
-                        targetEvent: e,
-                        locals: {qna: data}
-                    }).then(function() {
+                $http.get('qna', {params: {id, enabled: true}}).then(function({data}) {
+                    if (data) {
+                        $mdDialog.show({
+                            clickOutsideToClose: true,
+                            controller: 'qnaDialogController',
+                            template: qnaDialogTemplate(),
+                            parent: angular.element(document.body),
+                            targetEvent: e,
+                            locals: {qna: data}
+                        }).then(function() {
+                            $scope.questions = reject($scope.questions, 'id', id);
+                            getImagesWhileGridHasVisibleEmptySpace();
+                        }).finally(function() {
+                            toast.hide();
+                        });
+                    }
+                    else {
+                        toast.show('The selected question is no longer available');
                         $scope.questions = reject($scope.questions, 'id', id);
-                        getImagesWhileGridHasVisibleEmptySpace();
-                    }).finally(function() {
-                        toast.hide();
-                    });
+                        removeDeleted();
+                    }
                 }).catch(function() {
-                    toast.show('Unable to get QnA');
+                    toast.show('Unable to get question data');
                 });
             }
         });
