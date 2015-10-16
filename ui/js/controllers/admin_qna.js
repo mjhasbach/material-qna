@@ -1,5 +1,5 @@
 export default class {
-    constructor($scope) {
+    constructor($scope, toast) {
         'ngInject';
 
         Object.assign($scope, {
@@ -7,5 +7,7 @@ export default class {
             image: {},
             editQueue: {ids: []}
         });
+
+        $scope.$on('$destroy', toast.hide);
     }
 }
