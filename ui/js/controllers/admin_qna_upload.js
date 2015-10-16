@@ -1,5 +1,7 @@
-class AdminQnAUploadController {
+export default class {
     constructor($scope, Upload, toast) {
+        'ngInject';
+
         Object.assign($scope, {
             example: JSON.stringify([
                 {
@@ -45,7 +47,3 @@ class AdminQnAUploadController {
         });
     }
 }
-
-AdminQnAUploadController.$inject = ['$scope', 'Upload', 'toastFactory'];
-
-export default AdminQnAUploadController;

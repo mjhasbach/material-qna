@@ -1,7 +1,9 @@
 import pluck from 'lodash/collection/pluck';
 
-class AdminQnASearchController {
+export default class {
     constructor($scope, search) {
+        'ngInject';
+
         search($scope, {model: 'question', orderBy: 'id'});
 
         $scope.edit = function() {
@@ -10,7 +12,3 @@ class AdminQnASearchController {
         };
     }
 }
-
-AdminQnASearchController.$inject = ['$scope', 'searchFactory'];
-
-export default AdminQnASearchController;

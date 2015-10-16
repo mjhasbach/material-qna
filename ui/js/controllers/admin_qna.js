@@ -1,5 +1,7 @@
-class AdminQnAController {
+export default class {
     constructor($scope) {
+        'ngInject';
+
         Object.assign($scope, {
             tabs: {i: 0},
             image: {},
@@ -7,7 +9,3 @@ class AdminQnAController {
         });
     }
 }
-
-AdminQnAController.$inject = ['$scope'];
-
-export default AdminQnAController;

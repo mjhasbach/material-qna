@@ -1,5 +1,7 @@
-class MainController {
+export default class {
     constructor($scope, toast) {
+        'ngInject';
+
         Object.assign($scope, {
             toast,
             view: {current: $scope.user.data ? 'qna' : 'auth'}
@@ -12,7 +14,3 @@ class MainController {
         });
     }
 }
-
-MainController.$inject = ['$scope', 'toastFactory'];
-
-export default MainController;

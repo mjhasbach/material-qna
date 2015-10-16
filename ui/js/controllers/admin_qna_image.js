@@ -5,8 +5,10 @@ import map from 'lodash/collection/map';
 import nlp from 'nlp_compromise';
 import poweredByGoogleImg from '../../images/powered_by_google';
 
-class AdminQnAImageController {
+export default class {
     constructor($scope, $http, prefetchImage, toast) {
+        'ngInject';
+
         let tokenizeQuestion = function() {
                 let {question, answers} = $scope.image;
 
@@ -95,7 +97,3 @@ class AdminQnAImageController {
         init();
     }
 }
-
-AdminQnAImageController.$inject = ['$scope', '$http', 'prefetchImageFactory', 'toastFactory'];
-
-export default AdminQnAImageController;

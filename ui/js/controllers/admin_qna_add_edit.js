@@ -1,8 +1,10 @@
 import any from 'lodash/collection/any';
 import uuid from 'node-uuid';
 
-class AdminQnAAddEditController {
+export default class {
     constructor($scope, $timeout, $http, toast) {
+        'ngInject';
+
         let init = function(addForm) {
             if (addForm) {
                 //todo: causes TypeError: Cannot read property 'insertBefore' of null after removing jQuery, but appears harmless
@@ -103,7 +105,3 @@ class AdminQnAAddEditController {
         init();
     }
 }
-
-AdminQnAAddEditController.$inject = ['$scope', '$timeout', '$http', 'toastFactory'];
-
-export default AdminQnAAddEditController;

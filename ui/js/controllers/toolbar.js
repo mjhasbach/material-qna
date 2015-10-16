@@ -1,5 +1,7 @@
-class ToolbarController {
+export default class {
     constructor($scope, auth, toast) {
+        'ngInject';
+
         $scope.buttons = [
             {
                 name: 'QnA',
@@ -39,7 +41,3 @@ class ToolbarController {
         ];
     }
 }
-
-ToolbarController.$inject = ['$scope', 'authFactory', 'toastFactory'];
-
-export default ToolbarController;

@@ -1,4 +1,6 @@
-function ToastFactory($mdToast) {
+export default function($mdToast) {
+    'ngInject';
+
     return {
         hide() {
             $mdToast.hide();
@@ -14,7 +16,3 @@ function ToastFactory($mdToast) {
         }
     };
 }
-
-ToastFactory.$inject = ['$mdToast'];
-
-export default ToastFactory;

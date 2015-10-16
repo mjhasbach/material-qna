@@ -1,5 +1,7 @@
-class AuthController {
+export default class {
     constructor($scope, $timeout, auth, toast) {
+        'ngInject';
+
         Object.assign($scope, {
             areButtonsDisabled() {
                 return $scope.authenticating || !$scope.username || !$scope.password;
@@ -28,7 +30,3 @@ class AuthController {
         });
     }
 }
-
-AuthController.$inject = ['$scope', '$timeout', 'authFactory', 'toastFactory'];
-
-export default AuthController;

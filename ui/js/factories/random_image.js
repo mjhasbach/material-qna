@@ -1,7 +1,7 @@
 import random from 'lodash/number/random';
 import please from 'pleasejs';
 
-function randomImageFactory() {
+export default function() {
     let randomXY = function() {
             return random(200, 700);
         },
@@ -21,5 +21,3 @@ function randomImageFactory() {
         return `http://placehold.it/${randomXY()}x${randomXY()}/${formatColor(bgColor)}/${formatColor(textColor)}`;
     }
 }
-
-export default randomImageFactory;

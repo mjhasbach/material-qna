@@ -1,6 +1,8 @@
 import contains from 'lodash/collection/contains';
 
-function prefetchImageFactory($http, $q) {
+export default function($http, $q) {
+    'ngInject';
+
     return function(url, corsPort) {
         let src = corsPort ? `http://${window.location.hostname}:${corsPort}/${url}` : url;
 
@@ -13,7 +15,3 @@ function prefetchImageFactory($http, $q) {
         });
     }
 }
-
-prefetchImageFactory.$inject = ['$http', '$q'];
-
-export default prefetchImageFactory;

@@ -1,5 +1,7 @@
-class AdminUsersEditController {
+export default class {
     constructor($scope, $http, toast) {
+        'ngInject';
+
         let init = function() {
             $http.get('user', {params: {id: $scope.editQueue.ids[0]}}).then(function({data}) {
                 Object.assign($scope, {
@@ -32,7 +34,3 @@ class AdminUsersEditController {
         init();
     }
 }
-
-AdminUsersEditController.$inject = ['$scope', '$http', 'toastFactory'];
-
-export default AdminUsersEditController;

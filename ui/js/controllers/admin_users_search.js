@@ -1,7 +1,9 @@
 import pluck from 'lodash/collection/pluck';
 
-class AdminUsersSearchController {
+export default class {
     constructor($scope, search) {
+        'ngInject';
+
         search($scope, {model: 'user', orderBy: 'id'});
 
         $scope.edit = function() {
@@ -10,7 +12,3 @@ class AdminUsersSearchController {
         };
     }
 }
-
-AdminUsersSearchController.$inject = ['$scope', 'searchFactory'];
-
-export default AdminUsersSearchController;

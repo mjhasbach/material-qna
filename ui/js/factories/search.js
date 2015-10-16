@@ -1,7 +1,9 @@
 import debounce from 'lodash/function/debounce';
 import pluck from 'lodash/collection/pluck';
 
-function SearchFactory($http, $mdDialog, toast) {
+export default function($http, $mdDialog, toast) {
+    'ngInject';
+
     return function($scope, settings) {
         Object.assign($scope, {
             selected: [],
@@ -15,7 +17,9 @@ function SearchFactory($http, $mdDialog, toast) {
                 rows: []
             },
             search: debounce(function() {
-                let promise = $http.get(`${settings.model}/search`, {params: $scope.query}).then(function({data}) {
+                let promise = $http.get(`${settings.model}/search`, {
+                    params: $scope.query
+                }).then(function({data}) {
                     $scope.data = data;
                 }).catch(function() {
                     toast.show('Unable to search');
@@ -53,7 +57,3 @@ function SearchFactory($http, $mdDialog, toast) {
         $scope.search();
     }
 }
-
-SearchFactory.$inject = ['$http', '$mdDialog', 'toastFactory'];
-
-export default SearchFactory;

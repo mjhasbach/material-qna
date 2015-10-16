@@ -1,5 +1,7 @@
-class AdminSidenavController {
+export default class {
     constructor($scope) {
+        'ngInject';
+
         Object.assign($scope, {
             settings: [
                 {
@@ -21,7 +23,3 @@ class AdminSidenavController {
         });
     }
 }
-
-AdminSidenavController.$inject = ['$scope'];
-
-export default AdminSidenavController;

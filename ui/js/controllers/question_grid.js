@@ -5,8 +5,10 @@ import reject from 'lodash/collection/reject';
 import contains from 'lodash/collection/contains';
 import qnaDialogTemplate from '../../templates/qna_dialog';
 
-class QuestionGridController {
+export default class {
     constructor($scope, $http, $window, $mdDialog, randomImage, prefetchImage, toast) {
+        'ngInject';
+
         let $content = angular.element(document.querySelector('.questionGrid')),
             addImage = function(url) {
                 this.image = url;
@@ -117,15 +119,3 @@ class QuestionGridController {
         });
     }
 }
-
-QuestionGridController.$inject = [
-    '$scope',
-    '$http',
-    '$window',
-    '$mdDialog',
-    'randomImageFactory',
-    'prefetchImageFactory',
-    'toastFactory'
-];
-
-export default QuestionGridController;

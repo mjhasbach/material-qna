@@ -18,6 +18,7 @@ html(lang='en')
     ng-init='user = {data: #{JSON.stringify(user)}}; corsPort = #{corsPort}'
     layout='column'
     ng-cloak
+    ng-strict-di
     )
         div(ng-controller='mainController', layout='column', flex)
             include toolbar

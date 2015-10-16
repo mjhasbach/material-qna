@@ -1,14 +1,7 @@
-module.exports = function($mdThemingProvider) {
+export default function($mdThemingProvider) {
+    'ngInject';
+
     $mdThemingProvider.theme('default')
         .primaryPalette('blue-grey')
         .accentPalette('blue');
-
-    //lime
-    //light-green
-    //green +1
-    //teal + 1
-    //cyan + 1
-    //light-blue
-    //blue
-    //indigo
 };

@@ -1,5 +1,7 @@
-class QnAController {
+export default class {
     constructor($scope, $mdDialog, $http, toast, qna) {
+        'ngInject';
+
         Object.assign($scope, {
             qna,
             close() {
@@ -28,7 +30,3 @@ class QnAController {
         });
     }
 }
-
-QnAController.$inject = ['$scope', '$mdDialog', '$http', 'toastFactory', 'qna'];
-
-export default QnAController;
