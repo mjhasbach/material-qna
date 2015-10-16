@@ -4,7 +4,7 @@ block admin_users_edit
             md-progress-circular(ng-show='!data', md-mode='indeterminate')
             form(ng-show='data', name='editForm')
                 div(layout='row')
-                    md-input-container(style='width: 125px')
+                    md-input-container
                         label User ID
                         input(type='number', ng-model='data.id', disabled)
                     md-input-container(flex)
