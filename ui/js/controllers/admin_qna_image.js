@@ -57,8 +57,7 @@ export default class {
 
                 $http.get('image', {params: {index: $scope.i, query: $scope.query}}).then(function({data}) {
                     prefetchImage(data, $scope.corsPort).then(function(url) {
-                        $scope.images.shift();
-                        $scope.images.push(url);
+                        $scope.images[0] = url;
                         Object.assign($scope, {
                             currentImage: url,
                             loading: false
