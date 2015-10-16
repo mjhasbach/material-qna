@@ -1,6 +1,6 @@
 {
   "name": "material-qna",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Question and answer platform powered by Angular Material, Sequelize, and Express",
   "license": "MIT",
   "repository": "mjhasbach/material-qna",
