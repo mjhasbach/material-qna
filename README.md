@@ -19,7 +19,7 @@ The administration panel is divided into three sections:
 
 ### Installation
 
-1. Download and install [Node.js](https://nodejs.org/en/download/), if needed. Material QnA was tested with version 2.14.4.
+1. Download and install [Node.js](https://nodejs.org/en/download/), if needed
 2. Download Material QnA via `git`:
     - `git clone https://github.com/mjhasbach/material-qna.git`
 3. Enter the Material QnA project directory:
