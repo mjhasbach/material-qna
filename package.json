@@ -2,6 +2,7 @@
   "name": "material-qna",
   "version": "1.1.0",
   "description": "Question and answer platform powered by Angular Material, Sequelize, and Express",
+  "main": "server/server.js",
   "license": "MIT",
   "repository": "mjhasbach/material-qna",
   "homepage": "https://github.com/mjhasbach/material-qna",
