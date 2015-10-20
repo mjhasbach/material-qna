@@ -95,12 +95,9 @@ let _ = require('lodash'),
                 });
             },
             isCorrectAnswer(answer, data) {
-                let correctAnswer = data.correctAnswer ?
-                    data.answers[data.correctAnswer] ||
+                return answer.get('answer') === (_.isPlainObject(data.correctAnswer) ?
                     _.result(_.find(data.answers, {id: data.correctAnswer.answerId}), 'answer') :
-                    false;
-
-                return answer.get('answer') === correctAnswer;
+                    _.isNumber(data.correctAnswer) ? data.answers[data.correctAnswer] : null);
             },
             get(req, cb) {
                 db.models.question.findOne({
@@ -148,15 +145,15 @@ let _ = require('lodash'),
                             db.models.answer
                                 .create(answer, opt)
                                 .then(function(answer) {
-                                    if (!db.qna.isCorrectAnswer(answer, data)) {
-                                        return done();
-                                    }
+                                          if (!db.qna.isCorrectAnswer(answer, data)) {
+                                              return done();
+                                          }
 
-                                    db.models.correctAnswer
-                                        .upsert({questionId: question.get('id'), answerId: answer.get('id')})
-                                        .then(function() {done();})
-                                        .catch(done);
-                                }).catch(done);
+                                          db.models.correctAnswer
+                                              .upsert({questionId: question.get('id'), answerId: answer.get('id')})
+                                              .then(function() {done();})
+                                              .catch(done);
+                                      }).catch(done);
                         }, function(err) {
                             if (err) {
                                 return cb(err);
