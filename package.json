@@ -42,7 +42,7 @@
     "express": "4.13.3",
     "express-session": "1.11.3",
     "file-loader": "0.8.4",
-    "google-images2": "0.1.0",
+    "google-image": "1.0.0",
     "highlight.js": "8.7.0",
     "jade": "1.11.0",
     "jade-loader": "0.7.1",
