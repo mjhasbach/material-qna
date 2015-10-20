@@ -1,11 +1,12 @@
 "use strict";
 
 let session = require('express-session'),
+    config = require('./server_config'),
     auth = module.exports = {
         passport: require('passport'),
         init: function(app, db) {
             app.use(session({
-                secret: 'super-secret',
+                secret: config.session.secret,
                 resave: false,
                 saveUninitialized: false
             }));

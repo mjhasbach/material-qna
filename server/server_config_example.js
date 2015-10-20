@@ -13,6 +13,9 @@ module.exports = {
             idle: 10000
         }
     },
+    session: {
+        secret: 'top secret, bro'
+    },
     http: {
         port: 3000
     },
