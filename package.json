@@ -1,7 +1,7 @@
 {
   "name": "material-qna",
   "private": true,
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Question and answer platform powered by Angular Material, Sequelize, and Express",
   "main": "server/server.js",
   "license": "MIT",
