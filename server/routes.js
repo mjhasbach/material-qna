@@ -67,7 +67,7 @@ let _ = require('lodash'),
                 res.status(200).send();
             });
 
-            app.get('/qna', routes.isAdmin, function(req, res) {
+            app.get('/qna', routes.isAuthenticated, function(req, res) {
                 db.qna.get(req, function(err, qna) {
                     res.status(err ? 500 : 200).send(err ? err.message : qna);
                 });
