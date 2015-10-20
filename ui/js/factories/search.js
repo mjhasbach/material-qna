@@ -10,7 +10,9 @@ export default function($http, $mdDialog, toast) {
             query: {
                 order: settings.orderBy,
                 page: 1,
-                limit: 5
+                get limit() {
+                    return $scope.table.rowsPerPage;
+                }
             },
             data: {
                 count: 0,

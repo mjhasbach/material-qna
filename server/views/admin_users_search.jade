@@ -37,7 +37,8 @@ block admin_users_search
                             td {{user.isAdmin}}
                             td {{user.username}}
             md-data-table-pagination(
-            md-limit='query.limit'
+            md-limit='table.rowsPerPage'
             md-page='query.page'
             md-total='{{data.count}}'
-            md-trigger='search')
+            md-trigger='search'
+            )

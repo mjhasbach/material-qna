@@ -40,7 +40,7 @@ block admin_qna_search
                             td {{question.disabled}}
                             td {{question.question}}
             md-data-table-pagination(
-            md-limit='query.limit'
+            md-limit='table.rowsPerPage'
             md-page='query.page'
             md-total='{{data.count}}'
             md-trigger='search'
