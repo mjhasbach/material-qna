@@ -58,13 +58,11 @@
     "passport": "0.3.0",
     "passport-local-mysequelize": "0.0.1",
     "pleasejs": "0.4.2",
-    "release-script": "0.5.3",
     "sequelize": "3.11.0",
     "style-loader": "0.12.4",
     "webpack": "1.12.2"
   },
   "scripts": {
-    "release": "release",
     "postinstall": "node ./node_modules/webpack/bin/webpack.js --config ./ui/webpack.config.js -p -c --progress"
   }
 }
