@@ -6,7 +6,7 @@
   "main": "server/server.js",
   "license": "MIT",
   "repository": "mjhasbach/material-qna",
-  "homepage": "https://github.com/mjhasbach/material-qna",
+  "homepage": "http://material-qna.hasba.ch",
   "author": {
     "name": "Matthew Hasbach",
     "email": "hasbach.git@gmail.com",
