@@ -58,6 +58,7 @@ md-progress-circular,
 }
 
 button > md-progress-circular {
+    position: absolute;
     height: auto;
     left: -6px;
     top: -10px;
