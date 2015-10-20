@@ -31,13 +31,24 @@ body {
     margin-bottom: -4px;
 }
 
+.questionGrid > md-progress-circular {
+    position: fixed;
+    top: 64px;
+}
+
 md-progress-circular,
 .admin .qna .images > .imgNav > .imgContainer > img,
 .admin .qna .images > .imgNav > button {
-    position: absolute;
     margin: auto !important;
-    top: 0;
     bottom: 0;
+}
+
+.admin .qna .addEdit > md-progress-circular,
+.admin .qna .images > .imgNav > md-progress-circular,
+.admin .qna .images > .imgNav > .imgContainer > img,
+.admin .qna .images > .imgNav > button {
+    position: absolute;
+    top: 0;
 }
 
 :not(button) > md-progress-circular,
