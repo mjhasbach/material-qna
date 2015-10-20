@@ -43,6 +43,7 @@ md-progress-circular,
     bottom: 0;
 }
 
+.admin .users .edit > md-progress-circular,
 .admin .qna .addEdit > md-progress-circular,
 .admin .qna .images > .imgNav > md-progress-circular,
 .admin .qna .images > .imgNav > .imgContainer > img,
