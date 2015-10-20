@@ -3,6 +3,8 @@ block toolbar
         h1#title #{appName}
         span(flex)
         md-button.md-icon-button(
+        ng-href='{{button.href}}'
+        target='_blank'
         ng-repeat='button in buttons'
         ng-show='button.show'
         ng-click='button.onClick()'

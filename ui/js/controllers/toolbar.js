@@ -6,6 +6,12 @@ export default class {
 
         $scope.buttons = [
             {
+                name: 'View Code',
+                icon: 'code',
+                show: true,
+                href: 'https://github.com/mjhasbach/material-qna'
+            },
+            {
                 name: 'QnA',
                 icon: 'question_answer',
                 get show() {
