@@ -14,7 +14,9 @@ module.exports = {
         }
     },
     session: {
-        secret: 'top secret, bro'
+        secret: 'top secret, bro',
+        // the duration of login sessions in milliseconds
+        maxAge: 30 * 24 * 60 * 60 * 1000
     },
     http: {
         port: 3000
