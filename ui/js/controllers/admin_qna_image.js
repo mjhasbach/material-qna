@@ -9,7 +9,8 @@ export default class {
     constructor($scope, $http, prefetchImage, toast) {
         'ngInject';
 
-        let tokenizeQuestion = function() {
+        let $searchInput = angular.element(document.querySelector('.search > input')),
+            tokenizeQuestion = function() {
                 let {question, answers} = $scope.image;
 
                 $scope.tokens = uniq(reduce(
@@ -82,6 +83,8 @@ export default class {
                 if (!searchContainsToken) {
                     $scope.query += ($scope.query.length < 1 ? '' : ' ') + text;
                 }
+
+                $searchInput.focus();
             },
             leave() {
                 $scope.tabs.i = 0;
