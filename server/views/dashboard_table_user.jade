@@ -1,0 +1,11 @@
+block dashboard_table_user
+    div(ng-if='!user.data.isAdmin')
+        md-data-table-container.table
+           table(md-data-table, md-progress='deferred')
+              thead(md-order='query.order', md-trigger='search')
+                 tr
+                    block head
+              tbody
+                 tr(md-auto-select, ng-repeat='row in data.rows track by (row.id || row.questionId)')
+                    block body
+        include dashboard_table_pagination

@@ -1,0 +1,10 @@
+extends dashboard_table_admin
+
+block head
+    th(name='Question ID', order-by='id')
+    th(name='Disabled', order-by='disabled')
+    th(name='Question', order-by='question')
+block body
+    td {{row.id}}
+    td {{row.disabled}}
+    td {{row.question}}

@@ -1,0 +1,10 @@
+extends dashboard_table_admin
+
+block head
+    th(name='User ID', order-by='id')
+    th(name='Administrator', order-by='isAdmin')
+    th(name='Username', order-by='username')
+block body
+    td {{row.id}}
+    td {{row.isAdmin}}
+    td {{row.username}}

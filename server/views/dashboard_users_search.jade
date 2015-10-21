@@ -24,21 +24,4 @@ block dashboard_users_search
                 )
                     md-tooltip Remove
                     md-icon(class='material-icons') delete
-            md-data-table-container.table
-                table(md-data-table, md-row-select='selected', md-progress='deferred')
-                    thead(md-order='query.order', md-trigger='search')
-                        tr
-                            th(name='User ID', order-by='id')
-                            th(name='Administrator', order-by='isAdmin')
-                            th(name='Username', order-by='username')
-                    tbody
-                        tr(md-auto-select, ng-repeat='user in data.rows track by user.id')
-                            td {{user.id}}
-                            td {{user.isAdmin}}
-                            td {{user.username}}
-            md-data-table-pagination(
-            md-limit='table.rowsPerPage'
-            md-page='query.page'
-            md-total='{{data.count}}'
-            md-trigger='search'
-            )
+            include dashboard_users_seach_table
