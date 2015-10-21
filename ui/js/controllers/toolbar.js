@@ -11,7 +11,7 @@ export default class {
             },
             {
                 name: 'QnA',
-                icon: 'question_answer',
+                icon: 'grid_on',
                 get show() {
                     return $scope.user.data && $scope.view.current !== 'qna';
                 },
