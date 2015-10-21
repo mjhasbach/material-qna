@@ -8,6 +8,7 @@ export default function($http, $mdDialog, toast) {
         Object.assign($scope, {
             selected: [],
             query: {
+                UserId: $scope.user.data.isAdmin ? undefined : $scope.user.data.id,
                 order: settings.orderBy,
                 page: 1,
                 get limit() {

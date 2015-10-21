@@ -28,6 +28,7 @@ let _ = require('lodash'),
                         type: new Sequelize.VIRTUAL,
                         get: function() {
                             return {
+                                id: this.get('id'),
                                 username: this.get('username'),
                                 isAdmin: this.get('isAdmin')
                             };
@@ -257,6 +258,10 @@ let _ = require('lodash'),
                     .catch(cb);
             },
             search(req, cb) {
+                if (!req.user.get('isAdmin') && req.user.get('id') !== parseInt(req.query.UserId)) {
+                    return cb(new Error('you are only allowed to search for your own answered questions'));
+                }
+
                 db.models.answeredQuestion.findAndCountAll({
                     order: db.getOrder(req),
                     attributes: [
@@ -303,11 +308,21 @@ let _ = require('lodash'),
                     .then(function(user) {cb(null, user)})
                     .catch(cb);
             },
-            edit(data, cb) {
-                db.models.user
-                    .update(data, {where: {id: data.id}})
-                    .then(function() {cb();})
-                    .catch(cb);
+            edit(req, cb) {
+                let id = req.body.id || req.user.get('id');
+
+                if (!req.user.get('isAdmin') && req.user.get('id') !== id) {
+                    return cb(new Error('you are only allowed to edit your own account'));
+                }
+
+                db.models.user.update(req.body, {where: {id}}).then(function() {
+                    db.models.user.findOne({where: {id}}).then(function(user) {
+                        let password = req.body.password;
+
+                        password ? db.models.user.resetPassword(user.get('username'), password, null, cb) :
+                            cb(null, user);
+                    }).catch(cb);
+                }).catch(cb);
             },
             remove(ids, cb) {
                 db.models.user

@@ -5,16 +5,28 @@ export default class {
         Object.assign($scope, {
             settings: [
                 {
+                    name: 'Account',
+                    icon: 'account_box',
+                    show: true
+                },
+                {
                     name: 'Users',
-                    icon: 'people'
+                    icon: 'people',
+                    get show() {
+                        return $scope.user.data.isAdmin;
+                    }
                 },
                 {
                     name: 'QnA',
-                    icon: 'question_answer'
+                    icon: 'question_answer',
+                    get show() {
+                        return $scope.user.data.isAdmin;
+                    }
                 },
                 {
                     name: 'History',
-                    icon: 'history'
+                    icon: 'history',
+                    show: true
                 }
             ],
             itemClicked(setting) {

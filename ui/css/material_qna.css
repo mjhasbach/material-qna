@@ -67,11 +67,15 @@ button > md-progress-circular {
 }
 
 .admin > md-sidenav {
-    min-width: 167px;
-    max-width: 167px;
+    min-width: 175px;
+    max-width: 175px;
 }
 
-.admin > md-sidenav .Users, .admin > md-sidenav .History {
+.admin .account > h2 {
+    margin-bottom: 31px;
+}
+
+.admin > md-sidenav .Account, .admin > md-sidenav .Users, .admin > md-sidenav .History {
     margin-top: 4px !important;
 }
 

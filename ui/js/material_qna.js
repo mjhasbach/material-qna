@@ -18,6 +18,7 @@ import QuestionGridController from './controllers/question_grid';
 import QnADialogController from './controllers/qna_dialog';
 import AdminController from './controllers/admin'
 import AdminSidenavController from './controllers/admin_sidenav'
+import AdminAccountController from './controllers/admin_account';
 import AdminUsersController from './controllers/admin_users';
 import AdminUsersSearchController from './controllers/admin_users_search';
 import AdminUsersEditController from './controllers/admin_users_edit';
@@ -55,6 +56,7 @@ angular
     .controller('qnaDialogController', QnADialogController)
     .controller('adminController', AdminController)
     .controller('adminSidenavController', AdminSidenavController)
+    .controller('adminAccountController', AdminAccountController)
     .controller('adminUsersController', AdminUsersController)
     .controller('adminUsersEditController', AdminUsersEditController)
     .controller('adminUsersSearchController', AdminUsersSearchController)

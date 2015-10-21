@@ -134,9 +134,21 @@ let _ = require('lodash'),
                 });
             });
 
-            app.put('/user', routes.isAdmin, function(req, res) {
-                db.user.edit(req.body, function(err) {
-                    res.status(err ? 500 : 200).send(err ? err.message : null);
+            app.put('/user', routes.isAuthenticated, function(req, res) {
+                db.user.edit(req, function(err, user) {
+                    if (err) {
+                        res.status(500).send(err.message);
+                    }
+                    else {
+                        if (user && user.get('id') === req.user.get('id')) {
+                            req.logIn(user, function(err) {
+                                res.status(err ? 500 : 200).send(err ? 'unable to authenticate' : null);
+                            });
+                        }
+                        else {
+                            res.status(200).send();
+                        }
+                    }
                 });
             });
 
@@ -158,7 +170,7 @@ let _ = require('lodash'),
                 });
             });
 
-            app.get('/answeredQuestion/search', routes.isAdmin, function(req, res) {
+            app.get('/answeredQuestion/search', routes.isAuthenticated, function(req, res) {
                 db.answeredQuestion.search(req, function(err, answeredQuestions) {
                     res.status(err ? 500 : 200).send(err ? err.message : answeredQuestions);
                 });

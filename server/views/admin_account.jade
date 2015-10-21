@@ -1,0 +1,16 @@
+block admin_account
+    md-content.account.md-padding(
+    ng-if='setting.selected === "Account"'
+    ng-controller='adminAccountController'
+    layout='column'
+    flex
+    )
+        h2.md-title Account
+        md-input-container
+            label Username
+            input(type='text', ng-model='data.username', maxlength='255')
+        md-input-container
+            label Password
+            input(type='password', ng-model='data.password', maxlength='255')
+        div(layout='column', layout-align='center end')
+            md-button.md-raised.md-primary(ng-disabled='isSaveDisabled()', ng-click='save()', aria-label='save') Save
