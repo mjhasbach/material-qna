@@ -1,6 +1,6 @@
-block admin_qna_search
+block dashboard_qna_search
     md-tab(label='Search', ng-disabled='editQueue.ids.length || image.question', md-on-select='toast.hide()')
-        md-tab-content.search.md-padding(ng-if='tabs.i === 1', ng-controller='adminQnASearchController')
+        md-tab-content.search.md-padding(ng-if='tabs.i === 1', ng-controller='dashboardQnASearchController')
             div(layout='row')
                 md-input-container.questionId
                     label Question ID

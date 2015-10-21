@@ -1,0 +1,5 @@
+block dashboard_users
+    div(ng-if='setting.selected === "Users"', ng-controller='dashboardUsersController', layout='column', flex)
+        md-tabs.users(md-selected='tabs.i', md-stretch-tabs='always', flex)
+            include dashboard_users_search
+            include dashboard_users_edit

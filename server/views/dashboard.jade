@@ -1,0 +1,7 @@
+block dashboard
+    div.dashboard(ng-if='user.data && view.current === "dashboard"', ng-controller='dashboardController', layout='row', flex)
+        include dashboard_sidenav
+        include dashboard_account
+        include dashboard_users
+        include dashboard_qna
+        include dashboard_history

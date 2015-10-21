@@ -1,8 +1,8 @@
-block admin_qna_image
+block dashboard_qna_image
     md-tab(label='Images', ng-disabled='!image.question', md-on-select='toast.hide()')
         md-tab-content.images.md-padding(
         ng-if='tabs.i === 3'
-        ng-controller='adminQnAImageController'
+        ng-controller='dashboardQnAImageController'
         layout='column'
         flex
         )

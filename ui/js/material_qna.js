@@ -16,18 +16,18 @@ import ToolbarController from './controllers/toolbar';
 import AuthController from './controllers/auth';
 import QuestionGridController from './controllers/question_grid';
 import QnADialogController from './controllers/qna_dialog';
-import AdminController from './controllers/admin'
-import AdminSidenavController from './controllers/admin_sidenav'
-import AdminAccountController from './controllers/admin_account';
-import AdminUsersController from './controllers/admin_users';
-import AdminUsersSearchController from './controllers/admin_users_search';
-import AdminUsersEditController from './controllers/admin_users_edit';
-import AdminQnAController from './controllers/admin_qna';
-import AdminQnAAddEditController from './controllers/admin_qna_add_edit';
-import AdminQnASearchController from './controllers/admin_qna_search';
-import AdminQnAUploadController from './controllers/admin_qna_upload';
-import AdminQnAImageController from './controllers/admin_qna_image';
-import AdminHistoryController from './controllers/admin_history';
+import DashboardController from './controllers/dashboard'
+import DashboardSidenavController from './controllers/dashboard_sidenav'
+import DashboardAccountController from './controllers/dashboard_account';
+import DashboardUsersController from './controllers/dashboard_users';
+import DashboardUsersSearchController from './controllers/dashboard_users_search';
+import DashboardUsersEditController from './controllers/dashboard_users_edit';
+import DashboardQnAController from './controllers/dashboard_qna';
+import DashboardQnAAddEditController from './controllers/dashboard_qna_add_edit';
+import DashboardQnASearchController from './controllers/dashboard_qna_search';
+import DashboardQnAUploadController from './controllers/dashboard_qna_upload';
+import DashboardQnAImageController from './controllers/dashboard_qna_image';
+import DashboardHistoryController from './controllers/dashboard_history';
 import '../../node_modules/highlight.js/styles/rainbow';
 import '../../node_modules/angular-material/angular-material.css';
 import '../../node_modules/angular-material-data-table/dist/md-data-table.css';
@@ -54,15 +54,15 @@ angular
     .controller('authController', AuthController)
     .controller('questionGridController', QuestionGridController)
     .controller('qnaDialogController', QnADialogController)
-    .controller('adminController', AdminController)
-    .controller('adminSidenavController', AdminSidenavController)
-    .controller('adminAccountController', AdminAccountController)
-    .controller('adminUsersController', AdminUsersController)
-    .controller('adminUsersEditController', AdminUsersEditController)
-    .controller('adminUsersSearchController', AdminUsersSearchController)
-    .controller('adminQnAController', AdminQnAController)
-    .controller('adminQnAAddEditController', AdminQnAAddEditController)
-    .controller('adminQnAUploadController', AdminQnAUploadController)
-    .controller('adminQnASearchController', AdminQnASearchController)
-    .controller('adminQnAImageController', AdminQnAImageController)
-    .controller('adminHistoryController', AdminHistoryController);
+    .controller('dashboardController', DashboardController)
+    .controller('dashboardSidenavController', DashboardSidenavController)
+    .controller('dashboardAccountController', DashboardAccountController)
+    .controller('dashboardUsersController', DashboardUsersController)
+    .controller('dashboardUsersEditController', DashboardUsersEditController)
+    .controller('dashboardUsersSearchController', DashboardUsersSearchController)
+    .controller('dashboardQnAController', DashboardQnAController)
+    .controller('dashboardQnAAddEditController', DashboardQnAAddEditController)
+    .controller('dashboardQnAUploadController', DashboardQnAUploadController)
+    .controller('dashboardQnASearchController', DashboardQnASearchController)
+    .controller('dashboardQnAImageController', DashboardQnAImageController)
+    .controller('dashboardHistoryController', DashboardHistoryController);

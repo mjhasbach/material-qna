@@ -37,24 +37,24 @@ body {
 }
 
 md-progress-circular,
-.admin .qna .images > .imgNav > .imgContainer > img,
-.admin .qna .images > .imgNav > button {
+.dashboard .qna .images > .imgNav > .imgContainer > img,
+.dashboard .qna .images > .imgNav > button {
     margin: auto !important;
     bottom: 0;
 }
 
-.admin .users .edit > md-progress-circular,
-.admin .qna .addEdit > md-progress-circular,
-.admin .qna .upload > md-progress-circular,
-.admin .qna .images > .imgNav > md-progress-circular,
-.admin .qna .images > .imgNav > .imgContainer > img,
-.admin .qna .images > .imgNav > button {
+.dashboard .users .edit > md-progress-circular,
+.dashboard .qna .addEdit > md-progress-circular,
+.dashboard .qna .upload > md-progress-circular,
+.dashboard .qna .images > .imgNav > md-progress-circular,
+.dashboard .qna .images > .imgNav > .imgContainer > img,
+.dashboard .qna .images > .imgNav > button {
     position: absolute;
     top: 0;
 }
 
 :not(button) > md-progress-circular,
-.admin .qna .images > .imgNav > .imgContainer > img {
+.dashboard .qna .images > .imgNav > .imgContainer > img {
     left: 0;
     right: 0;
 }
@@ -66,136 +66,136 @@ button > md-progress-circular {
     top: -10px;
 }
 
-.admin > md-sidenav {
+.dashboard > md-sidenav {
     min-width: 175px;
     max-width: 175px;
 }
 
-.admin .account > h2 {
+.dashboard .account > h2 {
     margin-bottom: 31px;
 }
 
-.admin > md-sidenav .Account, .admin > md-sidenav .Users, .admin > md-sidenav .History {
+.dashboard > md-sidenav .Account, .dashboard > md-sidenav .Users, .dashboard > md-sidenav .History {
     margin-top: 4px !important;
 }
 
-.admin .users .search .userId, .admin .qna .search .questionId, .admin .history md-input-container {
+.dashboard .users .search .userId, .dashboard .qna .search .questionId, .dashboard .history md-input-container {
     width: 107px;
 }
 
-.admin .users .search .username, .admin .qna .search .question {
+.dashboard .users .search .username, .dashboard .qna .search .question {
     margin-right: 16px;
 }
 
-.admin .users .search .table, .admin .qna .search .table {
+.dashboard .users .search .table, .dashboard .qna .search .table {
     margin-top: 7px;
 }
 
 .auth button,
-.admin .users .edit button,
-.admin .qna .addEdit button {
+.dashboard .users .edit button,
+.dashboard .qna .addEdit button {
     height: 36px !important;
 }
 
-.admin .qna .addEdit .question {
+.dashboard .qna .addEdit .question {
     margin-bottom: 22px;
 }
 
-.admin .qna .addEdit md-input-container.answer {
+.dashboard .qna .addEdit md-input-container.answer {
     padding: 0;
 }
 
-.admin .qna .addEdit .correctAnswerContainer {
+.dashboard .qna .addEdit .correctAnswerContainer {
     width: 108px
 }
 
-.admin .qna .addEdit .correctAnswerContainer > .correctAnswer {
+.dashboard .qna .addEdit .correctAnswerContainer > .correctAnswer {
     padding-left: 0;
 }
 
-.admin .qna .addEdit .deleteAnswer {
+.dashboard .qna .addEdit .deleteAnswer {
     margin-bottom: 10px;
 }
 
-.admin .qna .images > .search {
+.dashboard .qna .images > .search {
     margin-top: 10px;
 }
 
-.admin .qna .upload > .example {
+.dashboard .qna .upload > .example {
     margin-top: 10px;
     overflow-x: auto;
     background-color: #474949;
 }
 
-.admin .qna .upload > .example > pre {
+.dashboard .qna .upload > .example > pre {
     margin: 0;
 }
 
-.admin .qna .upload > .example > pre > code {
+.dashboard .qna .upload > .example > pre > code {
     overflow-x: visible;
 }
 
-.admin .qna .images > .imgNav {
+.dashboard .qna .images > .imgNav {
     position: relative;
     margin: 3px 0 16px 0;
 }
 
-.admin .qna .images > .imgNav > button.previous {
+.dashboard .qna .images > .imgNav > button.previous {
     left: 10px;
 }
 
-.admin .qna .images > .imgNav > button.next {
+.dashboard .qna .images > .imgNav > button.next {
     right: 10px;
 }
 
-.admin .qna .images > .imgNav > .imgContainer > img {
+.dashboard .qna .images > .imgNav > .imgContainer > img {
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
 }
 
-.admin .qna .images > .imgNav > .imgContainer > .poweredByGoogleImg {
+.dashboard .qna .images > .imgNav > .imgContainer > .poweredByGoogleImg {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     width: 170px;
     padding: 7px;
 }
 
-.admin .qna .images md-progress-circular {
+.dashboard .qna .images md-progress-circular {
     z-index: 1;
 }
 
-.admin .qna .images > .tokenContainer {
+.dashboard .qna .images > .tokenContainer {
     margin-bottom: 13px;
 }
 
 /*todo temporary fix, see https://github.com/angular/material/pull/5102 and https://github.com/angular/material/issues/4938*/
-.admin .qna .images > .tokenContainer md-chip {
+.dashboard .qna .images > .tokenContainer md-chip {
     padding-right: 12px;
 }
 
 /*todo temporary fix, see https://github.com/angular/material/pull/5102 and https://github.com/angular/material/issues/4938*/
-.admin .qna .images > .tokenContainer md-chip > .md-chip-content {
+.dashboard .qna .images > .tokenContainer md-chip > .md-chip-content {
     padding-right: 0;
 }
 
-.admin .qna .images > .imgNav > button.ng-enter,
-.admin .qna .images > .imgNav > .imgContainer.ng-enter {
+.dashboard .qna .images > .imgNav > button.ng-enter,
+.dashboard .qna .images > .imgNav > .imgContainer.ng-enter {
     -webkit-animation: fadeIn 1.0s linear;
     -moz-animation: fadeIn 1.0s linear;
     -o-animation: fadeIn 1.0s linear;
     animation: fadeIn 1.0s linear;
 }
 
-.admin .qna .images > .imgNav > button.ng-leave,
-.admin .qna .images > .imgNav > .imgContainer.ng-leave {
+.dashboard .qna .images > .imgNav > button.ng-leave,
+.dashboard .qna .images > .imgNav > .imgContainer.ng-leave {
     -webkit-animation: fadeOut 1.0s linear;
     -moz-animation: fadeOut 1.0s linear;
     -o-animation: fadeOut 1.0s linear;
     animation: fadeOut 1.0s linear;
 }
 
-.admin .history md-datepicker {
+.dashboard .history md-datepicker {
     margin-top: 12px;
 }
 

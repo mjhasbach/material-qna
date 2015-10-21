@@ -1,7 +1,7 @@
-block admin_qna_upload
+block dashboard_qna_upload
     md-tab(label='Upload', ng-disabled='editQueue.ids.length || image.question', md-on-select='toast.hide()', flex)
         md-tab-content.upload.md-padding(
-        ng-controller='adminQnAUploadController'
+        ng-controller='dashboardQnAUploadController'
         ngf-select='upload($file)'
         ngf-drop='upload($file)'
         )

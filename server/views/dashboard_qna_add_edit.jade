@@ -1,8 +1,8 @@
-block admin_qna_add
+block dashboard_qna_add
     md-tab(label='{{editQueue.ids.length ? "Edit" : "Add"}}', ng-disabled='image.question', md-on-select='toast.hide()')
         md-tab-content.addEdit.md-padding(
         ng-if='tabs.i === 0 || image.question'
-        ng-controller='adminQnAAddEditController'
+        ng-controller='dashboardQnAAddEditController'
         )
             md-progress-circular(ng-show='!data', md-mode='indeterminate')
             form(ng-show='data', name='addForm')

@@ -1,6 +1,6 @@
-block admin_users_edit
+block dashboard_users_edit
     md-tab(label='Edit', ng-disabled='!editQueue.ids.length', md-on-select='toast.hide()')
-        md-tab-content.edit.md-padding(ng-if='tabs.i === 1', ng-controller='adminUsersEditController')
+        md-tab-content.edit.md-padding(ng-if='tabs.i === 1', ng-controller='dashboardUsersEditController')
             md-progress-circular(ng-show='!data', md-mode='indeterminate')
             form(ng-show='data', name='editForm')
                 div(layout='row')

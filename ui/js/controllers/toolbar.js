@@ -20,13 +20,13 @@ export default class {
                 }
             },
             {
-                name: 'Settings',
+                name: 'Dashboard',
                 icon: 'settings',
                 get show() {
-                    return $scope.user.data && $scope.view.current !== 'admin';
+                    return $scope.user.data && $scope.view.current !== 'dashboard';
                 },
                 onClick: function() {
-                    $scope.view.current = 'admin';
+                    $scope.view.current = 'dashboard';
                 }
             },
             {
