@@ -26,19 +26,10 @@ block dashboard_history
                 md-tooltip Remove
                 md-icon(class='material-icons') delete
         md-data-table-container.table
-            table(md-data-table, md-row-select='selected', md-progress='deferred')
-                thead(md-order='query.order', md-trigger='search')
-                    tr
-                        th(name='Username', order-by='UserId')
-                        th(name='Question', order-by='questionId')
-                        th(name='Answer', order-by='answerId')
-                        th(name='Date', order-by='updatedAt')
-                tbody
-                    tr(md-auto-select, ng-repeat='item in data.rows track by item.questionId')
-                        td {{item.User.username}}
-                        td {{item.question.question}}
-                        td {{item.answer.answer}}
-                        td {{item.formattedDate}}
+            table(ng-if='!user.data.isAdmin', md-data-table, md-progress='deferred')
+                include dashboard_history_table_content
+            table(ng-if='user.data.isAdmin', md-data-table, md-row-select='selected', md-progress='deferred')
+                include dashboard_history_table_content
         md-data-table-pagination(
         md-limit='table.rowsPerPage'
         md-page='query.page'
