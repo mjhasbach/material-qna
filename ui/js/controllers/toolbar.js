@@ -21,7 +21,7 @@ export default class {
             },
             {
                 name: 'Dashboard',
-                icon: 'settings',
+                icon: 'view_list',
                 get show() {
                     return $scope.user.data && $scope.view.current !== 'dashboard';
                 },
