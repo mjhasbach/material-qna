@@ -10,7 +10,7 @@ export default class {
                 href: 'https://github.com/mjhasbach/material-qna'
             },
             {
-                name: 'QnA',
+                name: 'Question Grid',
                 icon: 'grid_on',
                 get show() {
                     return $scope.user.data && $scope.view.current !== 'qna';
