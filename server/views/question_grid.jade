@@ -13,5 +13,5 @@ block qna
             h3 Unable to get question images
         div(ng-if='placeholderFail', layout='column', layout-align='center center', flex)
             h3 Unable to get placeholder images
-        div.deckgrid(ng-if='!noQuestions && !imageFail && !placeholderFail', deckgrid source='questions')
+        div.deckgrid(ng-if='!noQuestions && !imageFail && !placeholderFail', source='questions', deckgrid, flex)
             img(ng-src='{{card.image}}', ng-click='mother.imageClicked($event, card.id)')
