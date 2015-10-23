@@ -11,6 +11,9 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
+        module: {
+            noParse: /autoit\.js$/
+        },
         loaders: [
             {
                 test: /\.js$/,
