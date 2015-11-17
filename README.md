@@ -4,9 +4,9 @@ Material QnA is a question and answer platform designed using Google's [Material
 
 ### Features
 
-Questions have one or more answers and may have a correct answer, have an image, or be disabled. After registering or logging in, enabled, unanswered question images are fetched and displayed in a Pinterest-style [masonry grid](http://www.sitepoint.com/understanding-masonry-layout/) until there is no visible whitespace below the last image in each column or no eligible questions remain. More images are downloaded, if needed, upon answering a question, scrolling, resizing the window, or returning to the grid after visiting the administration panel. If a question has no image, one is generated with pseudo-random dimensions, a pseudo-random background color based on the [golden ratio](https://en.wikipedia.org/wiki/Golden_ratio), and a [complementary](https://en.wikipedia.org/wiki/Complementary_colors) text color. Clicking a question image opens a dialog in which a user may answer the question, and afterwards the user is given feedback. Answered questions are removed from the grid after closing the dialog.
+Questions have one or more answers and may have a correct answer, have an image, or be disabled. After registering or logging in, enabled, unanswered question images are fetched and displayed in a Pinterest-style [masonry grid](http://www.sitepoint.com/understanding-masonry-layout/) until there is no visible whitespace below the last image in each column or no eligible questions remain. More images are downloaded, if needed, upon answering a question, scrolling, resizing the window, or returning to the grid after visiting the dashboard. If a question has no image, one is generated with pseudo-random dimensions, a pseudo-random background color based on the [golden ratio](https://en.wikipedia.org/wiki/Golden_ratio), and a [complementary](https://en.wikipedia.org/wiki/Complementary_colors) text color. Clicking a question image opens a dialog in which a user may answer the question, and afterwards the user is given feedback. Answered questions are removed from the grid after closing the dialog.
 
-The administration panel is divided into three sections:
+The dashboard is divided into three sections:
 
 - Users
     - Search for users and edit / delete them individually or in bulk
