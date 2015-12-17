@@ -19,7 +19,7 @@ module.exports = {
                 test: /\.js$/,
                 loaders: [
                     'ng-annotate?add=true',
-                    'babel?optional[]=runtime'
+                    'babel?presets[]=es2015'
                 ],
                 include: [jsDir]
             },
