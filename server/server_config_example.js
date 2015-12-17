@@ -23,5 +23,8 @@ module.exports = {
     },
     cors: {
         port: 3001
+    },
+    bing: {
+        accountKey: 'some key'
     }
 };

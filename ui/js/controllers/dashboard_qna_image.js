@@ -3,7 +3,7 @@ import uniq from 'lodash/array/uniq';
 import reduce from 'lodash/collection/reduce';
 import map from 'lodash/collection/map';
 import nlp from 'nlp_compromise';
-import poweredByGoogleImg from '../../images/powered_by_google';
+import poweredByBingImg from '../../images/powered_by_bing';
 
 export default class {
     constructor($scope, $http, prefetchImage, toast) {
@@ -38,7 +38,7 @@ export default class {
             };
 
         Object.assign($scope, {
-            poweredByGoogleImg,
+            poweredByBingImg,
             query: '',
             images: [],
             previous() {

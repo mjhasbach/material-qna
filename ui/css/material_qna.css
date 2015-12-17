@@ -158,8 +158,8 @@ button > md-progress-circular {
     object-fit: contain;
 }
 
-.dashboard .qna .images > .imgNav > .imgContainer > .poweredByGoogleImg {
-    background: rgba(0, 0, 0, 0.5);
+.dashboard .qna .images > .imgNav > .imgContainer > .poweredByBingImg {
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     width: 170px;
     padding: 7px;

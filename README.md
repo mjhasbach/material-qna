@@ -15,7 +15,7 @@ The dashboard is divided into the following sections:
 - QnA
     - Add questions one at a time or in bulk via JSON upload
     - Search for questions and edit / delete them individually or in bulk
-    - Search for question images (powered by the [Google Image Search API](https://developers.google.com/image-search/v1/jsondevguide))
+    - Search for question images (powered by the [Bing Search API](https://datamarket.azure.com/dataset/bing/search))
 - History
     - Search for answered questions and delete them them individually or in bulk
 

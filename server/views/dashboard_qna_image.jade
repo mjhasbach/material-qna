@@ -26,7 +26,7 @@ block dashboard_qna_image
                     md-icon(class='material-icons') arrow_forward
                 .imgContainer(ng-repeat='image in images', flex)
                     img.searchImg.md-whiteframe-z2(ng-src='{{image}}')
-                    img.poweredByGoogleImg(ng-if='currentImage', ng-src='{{poweredByGoogleImg}}')
+                    img.poweredByBingImg(ng-if='currentImage', ng-src='{{poweredByBingImg}}')
             div Question: {{image.question}}
             md-input-container.search
                 label Search
