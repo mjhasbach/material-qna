@@ -6,7 +6,7 @@ block qna
     layout='row'
     flex
     )
-        md-progress-circular(ng-show='gettingImages', md-mode='indeterminate')
+        md-progress-circular(ng-show='gettingImages', md-mode='indeterminate', md-diameter='96')
         div(ng-if='noQuestions', layout='column', layout-align='center center', flex)
             h3 No questions have been added yet or you have answered all available questions
         div(ng-if='imageFail', layout='column', layout-align='center center', flex)

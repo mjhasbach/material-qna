@@ -5,7 +5,7 @@ block dashboard_qna_upload
         ngf-select='upload($file)'
         ngf-drop='upload($file)'
         )
-            md-progress-circular(ng-show='uploading', md-mode='indeterminate')
+            md-progress-circular(ng-show='uploading', md-mode='indeterminate', md-diameter='96')
             div
                 | Click or drag-and-drop anywhere in this tab to upload a QnA file. The file must be a JSON array of
                 | objects. Each object must have question (string) and answers (array of strings) properties. The object

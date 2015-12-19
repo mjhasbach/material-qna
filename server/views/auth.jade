@@ -32,10 +32,10 @@ block auth
                     )
                     div(ng-messages='authForm.password.$error')
                         div(ng-message='required', ng-if='authForm.password.$touched') This is required
-            div(layout='row', layout-align='center center')
+            div.buttonWrap(layout='row', layout-align='center center')
                 md-button.md-raised(ng-disabled='areButtonsDisabled()', ng-click='authenticate(authForm)')
                     div(ng-show='!loggingIn') Log In
-                    md-progress-circular(ng-show='loggingIn', md-mode='indeterminate', md-diameter='20px')
+                    md-progress-circular(ng-show='loggingIn', md-mode='indeterminate', md-diameter='40')
                 md-button.md-raised(ng-disabled='areButtonsDisabled()', ng-click='authenticate(authForm, true)')
                     div(ng-show='!registering') Register
-                    md-progress-circular(ng-show='registering', md-mode='indeterminate', md-diameter='20px')
+                    md-progress-circular(ng-show='registering', md-mode='indeterminate', md-diameter='40')

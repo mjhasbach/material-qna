@@ -16,6 +16,14 @@ body {
     width: 200px;
 }
 
+.auth md-input-container {
+    margin-bottom: 0;
+}
+
+.auth .buttonWrap {
+    padding-top: 0;
+}
+
 .questionGrid > .deckgrid[deckgrid]::before {
     content: '4 .column.column-1-4';
     font-size: 0;
@@ -64,15 +72,12 @@ md-progress-circular,
 }
 
 button > md-progress-circular {
-    position: absolute;
-    height: auto;
-    left: -6px;
-    top: -10px;
+    top: -2px;
 }
 
 .dashboard > md-sidenav {
-    min-width: 175px;
-    max-width: 175px;
+    min-width: 183px;
+    max-width: 183px;
 }
 
 .dashboard .account > h2 {
@@ -87,12 +92,24 @@ button > md-progress-circular {
     width: 107px;
 }
 
-.dashboard .users .search .username, .dashboard .qna .search .question {
-    margin-right: 16px;
+.dashboard .history md-datepicker {
+    padding-top: 15px;
 }
 
-.dashboard .users .search .table, .dashboard .qna .search .table {
-    margin-top: 7px;
+.checkboxContainer {
+    height: 72px;
+}
+
+.checkboxContainer > md-checkbox {
+    margin: 0 0 0 10px;
+}
+
+.checkboxContainer > div {
+    margin-left: 10px;
+}
+
+.dashboard .users .search .username, .dashboard .qna .search .question {
+    margin-right: 16px;
 }
 
 .auth button,
@@ -113,16 +130,8 @@ button > md-progress-circular {
     width: 108px
 }
 
-.dashboard .qna .addEdit .correctAnswerContainer > .correctAnswer {
-    padding-left: 0;
-}
-
-.dashboard .qna .addEdit .deleteAnswer {
-    margin-bottom: 10px;
-}
-
-.dashboard .qna .images > .search {
-    margin-top: 10px;
+.dashboard .qna .addEdit .answerRow {
+    height: 69px;
 }
 
 .dashboard .qna .upload > .example {
@@ -139,9 +148,14 @@ button > md-progress-circular {
     overflow-x: visible;
 }
 
+.dashboard .qna .images > .search {
+    margin-top: 38px;
+    margin-bottom: 0;
+}
+
 .dashboard .qna .images > .imgNav {
     position: relative;
-    margin: 3px 0 16px 0;
+    margin: 24px 0 27px 0;
 }
 
 .dashboard .qna .images > .imgNav > button.previous {
@@ -165,22 +179,8 @@ button > md-progress-circular {
     padding: 7px;
 }
 
-.dashboard .qna .images md-progress-circular {
-    z-index: 1;
-}
-
 .dashboard .qna .images > .tokenContainer {
     margin-bottom: 13px;
-}
-
-/*todo temporary fix, see https://github.com/angular/material/pull/5102 and https://github.com/angular/material/issues/4938*/
-.dashboard .qna .images > .tokenContainer md-chip {
-    padding-right: 12px;
-}
-
-/*todo temporary fix, see https://github.com/angular/material/pull/5102 and https://github.com/angular/material/issues/4938*/
-.dashboard .qna .images > .tokenContainer md-chip > .md-chip-content {
-    padding-right: 0;
 }
 
 .dashboard .qna .images > .imgNav > button.ng-enter,
@@ -197,10 +197,6 @@ button > md-progress-circular {
     -moz-animation: fadeOut 1.0s linear;
     -o-animation: fadeOut 1.0s linear;
     animation: fadeOut 1.0s linear;
-}
-
-.dashboard .history md-datepicker {
-    margin-top: 12px;
 }
 
 @keyframes fadeIn {

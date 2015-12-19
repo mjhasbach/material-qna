@@ -1,7 +1,7 @@
 block dashboard_users_edit
     md-tab(label='Edit', ng-disabled='!editQueue.ids.length', md-on-select='toast.hide()')
         md-tab-content.edit.md-padding(ng-if='tabs.i === 1', ng-controller='dashboardUsersEditController')
-            md-progress-circular(ng-show='!data', md-mode='indeterminate')
+            md-progress-circular(ng-show='!data', md-mode='indeterminate', md-diameter='96')
             form(ng-show='data', name='editForm')
                 div(layout='row')
                     md-input-container
@@ -28,4 +28,4 @@ block dashboard_users_edit
                     md-button.md-raised.md-warn(ng-click='cancel()', ng-disabled='saving') Cancel
                     md-button.md-raised.md-primary(ng-click='save()', ng-disabled='!data.username')
                         div(ng-show='!saving') Save
-                        md-progress-circular(ng-show='saving', md-mode='indeterminate', md-diameter='20px')
+                        md-progress-circular(ng-show='saving', md-mode='indeterminate', md-diameter='40')

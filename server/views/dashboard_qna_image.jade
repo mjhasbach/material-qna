@@ -7,7 +7,7 @@ block dashboard_qna_image
         flex
         )
             .imgNav(flex)
-                md-progress-circular(ng-show='loading', md-mode='indeterminate')
+                md-progress-circular(ng-show='loading', md-mode='indeterminate', md-diameter='96')
                 md-button.md-fab.previous(
                 ng-disabled='i < 1 || loading'
                 ng-if='currentImage && query === lastQuery'

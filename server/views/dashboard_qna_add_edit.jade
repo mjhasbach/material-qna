@@ -4,9 +4,9 @@ block dashboard_qna_add
         ng-if='tabs.i === 0 || image.question'
         ng-controller='dashboardQnAAddEditController'
         )
-            md-progress-circular(ng-show='!data', md-mode='indeterminate')
+            md-progress-circular(ng-show='!data', md-mode='indeterminate', md-diameter='96')
             form(ng-show='data', name='addForm')
-                md-input-container.question(name='addForm', flex)
+                md-input-container.question(layout-fill)
                     label Question
                     textarea(
                     required
@@ -21,7 +21,7 @@ block dashboard_qna_add
                         div(ng-message='required', ng-if='addForm.question.$touched') This is required
                 div(ng-show='hasCorrectAnswer', layout='row', layout-align='end center') Correct Answer
                 div(ng-repeat='answer in data.answers track by answer.id', layout='row')
-                    div(layout='row', layout-align='center center')
+                    div.answerRow(layout='row', layout-align='center center')
                         //todo resolve ink animation issue
                         md-button.md-icon-button(
                         ng-disabled='data.answers.length < 2 || saving'
@@ -30,7 +30,7 @@ block dashboard_qna_add
                         md-no-ink
                         )
                             md-tooltip Delete Answer
-                            md-icon.deleteAnswer(class='material-icons') delete
+                            md-icon(class='material-icons') delete
                     md-input-container.answer(flex)
                         label Answer {{$index + 1}}
                         textarea(
@@ -70,4 +70,4 @@ block dashboard_qna_add
                         | Cancel
                     md-button.md-raised.md-primary(ng-disabled='isSubmitDisabled()', ng-click='save(addForm)')
                         div(ng-show='!saving') Save
-                        md-progress-circular(ng-show='saving', md-mode='indeterminate', md-diameter='20px')
+                        md-progress-circular(ng-show='saving', md-mode='indeterminate', md-diameter='40')

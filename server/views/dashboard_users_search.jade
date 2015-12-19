@@ -8,7 +8,7 @@ block dashboard_users_search
                 md-input-container.username(flex)
                     label Username Contains
                     input(ng-model='query.username', maxlength='255', ng-change='search()')
-                div(layout='row', layout-align='center center')
+                div.checkboxContainer(layout='row', layout-align='center center')
                     div Administrator
                     md-checkbox(ng-model='query.isAdmin', aria-label='is administrator', ng-change='search()')
             md-data-table-toolbar

@@ -8,10 +8,10 @@ block dashboard_qna_search
                 md-input-container.question(flex)
                     label Question Contains
                     input(ng-model='query.question', maxlength='255', ng-change='search()')
-                div(layout='row', layout-align='center center')
+                div.checkboxContainer(layout='row', layout-align='center center')
                     div Disabled
                     md-checkbox(ng-model='query.disabled', aria-label='is disabled', ng-change='search()')
-                div(layout='row', layout-align='center center')
+                div.checkboxContainer(layout='row', layout-align='center center')
                     div Missing Image
                     md-checkbox(ng-model='query.missingImage', aria-label='missing image', ng-change='search()')
             md-data-table-toolbar
