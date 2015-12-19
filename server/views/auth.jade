@@ -6,7 +6,7 @@ block auth
     layout-align='center center',
     flex
     )
-        form.auth.md-whiteframe-z2(name='authForm', layout-padding)
+        form.auth.md-whiteframe-z2(name='authForm', ng-submit='authenticate()', layout-padding)
             div(layout='row', layout-align='center center')
                 md-icon.md-primary.md-hue-5(class='material-icons') question_answer
             dv(layout='column', flex)
@@ -33,9 +33,9 @@ block auth
                     div(ng-messages='authForm.password.$error')
                         div(ng-message='required', ng-if='authForm.password.$touched') This is required
             div.buttonWrap(layout='row', layout-align='center center')
-                md-button.md-raised(ng-disabled='areButtonsDisabled()', ng-click='authenticate(authForm)')
+                md-button.md-raised(type='submit', ng-disabled='areButtonsDisabled()')
                     div(ng-show='!loggingIn') Log In
                     md-progress-circular(ng-show='loggingIn', md-mode='indeterminate', md-diameter='40')
-                md-button.md-raised(ng-disabled='areButtonsDisabled()', ng-click='authenticate(authForm, true)')
+                md-button.md-raised(ng-disabled='areButtonsDisabled()', ng-click='authenticate(true)')
                     div(ng-show='!registering') Register
                     md-progress-circular(ng-show='registering', md-mode='indeterminate', md-diameter='40')
