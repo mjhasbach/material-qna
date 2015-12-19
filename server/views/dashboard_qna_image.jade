@@ -33,7 +33,6 @@ block dashboard_qna_image
                 input(ng-model='query', type='search')
             .tokenContainer
                 div Click any of the below QnA tokens to add them to the search.
-                //todo improve chips, see https://github.com/angular/material/issues/4938
                 md-chips.md-readonly(ng-model='tokens', readonly='true')
                     md-chip-template(ng-click='tokenClicked($event)') {{$chip}}
             div(layout='row', layout-align='end center')
