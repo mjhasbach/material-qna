@@ -60,7 +60,7 @@ export default class {
                     prefetchImage(data, $scope.corsPort).then(function(url) {
                         $scope.images[0] = url;
                         Object.assign($scope, {
-                            currentImage: url,
+                            currentImage: data,
                             loading: false
                         });
                     }).catch(function() {
