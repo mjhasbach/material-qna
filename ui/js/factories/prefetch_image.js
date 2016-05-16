@@ -4,7 +4,7 @@ export default function($http, $q) {
     'ngInject';
 
     return function(url, corsPort) {
-        let src = corsPort ? `http://${window.location.hostname}:${corsPort}/${url}` : url;
+        let src = corsPort ? `${window.location.protocol}//${window.location.hostname}:${corsPort}/${url}` : url;
 
         return $q(function(resolve, reject) {
             $http.get(src).then(function(res) {

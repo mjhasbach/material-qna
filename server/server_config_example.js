@@ -21,8 +21,15 @@ module.exports = {
     http: {
         port: 3000
     },
+    https: {
+        port: 3001,
+        key: '/path/to/key',
+        cert: '/path/to/cert',
+        ca: '/path/to/ca'
+    },
+    // The cors-anywhere server will be https if config.https is supplied
     cors: {
-        port: 3001
+        port: 3002
     },
     bing: {
         accountKey: 'some key'

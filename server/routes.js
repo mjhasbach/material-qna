@@ -1,8 +1,9 @@
 "use strict";
 
 let _ = require('lodash'),
-    http = require('http'),
     path = require('path'),
+    http = require('http'),
+    https = require('https'),
     multer = require('multer'),
     express = require('express'),
     bodyParser = require('body-parser'),
@@ -176,6 +177,16 @@ let _ = require('lodash'),
                 });
             });
 
-            http.createServer(app).listen(config.http.port);
+            if (config.http) {
+                http.createServer(app).listen(config.http.port);
+            }
+
+            if (config.https) {
+                https.createServer(config.https, app).listen(config.https.port);
+            }
+
+            if (!config.http && !config.https) {
+                throw new Error('http and/or https config objects must be supplied');
+            }
         }
     };
