@@ -3,7 +3,6 @@
 let express = require('express'),
     db = require('./db'),
     auth = require('./auth'),
-    cors = require('./cors'),
     routes = require('./routes'),
     app = express();
 
